@@ -1,0 +1,1037 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>跌倒检测实时可视化系统</title>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Microsoft YaHei', Arial, sans-serif;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            height: 100vh;
+            overflow: hidden;
+        }
+
+        .container {
+            height: 100vh;
+            display: flex;
+            flex-direction: column;
+            background: white;
+        }
+
+        .header {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            padding: 10px 20px;
+            text-align: center;
+            flex-shrink: 0;
+        }
+
+        .header h1 {
+            font-size: 1.5em;
+            margin-bottom: 2px;
+        }
+
+        .header p {
+            font-size: 0.9em;
+            opacity: 0.9;
+        }
+
+        .main-content {
+            flex: 1;
+            display: flex;
+            flex-direction: column;
+            padding: 10px;
+            overflow: hidden;
+        }
+
+        .top-section {
+            display: flex;
+            gap: 10px;
+            margin-bottom: 10px;
+            flex-shrink: 0;
+        }
+
+        .control-panel {
+            background: #f8f9fa;
+            padding: 10px;
+            border-radius: 6px;
+            flex: 1;
+        }
+
+        .control-panel h3 {
+            margin-bottom: 8px;
+            color: #333;
+            font-size: 1em;
+        }
+
+        .dataset-selector {
+            display: flex;
+            gap: 8px;
+            align-items: center;
+            margin-bottom: 8px;
+        }
+
+        select, button {
+            padding: 6px 10px;
+            border: 1px solid #ddd;
+            border-radius: 4px;
+            font-size: 12px;
+        }
+
+        select:focus, button:focus {
+            outline: none;
+            border-color: #667eea;
+        }
+
+        button {
+            background: #667eea;
+            color: white;
+            border: none;
+            cursor: pointer;
+            font-weight: bold;
+        }
+
+        button:hover {
+            background: #5a6fd8;
+        }
+
+        .playback-controls {
+            display: flex;
+            gap: 6px;
+            align-items: center;
+            margin-bottom: 8px;
+        }
+
+        .slider-container {
+            flex: 1;
+            display: flex;
+            align-items: center;
+            gap: 6px;
+        }
+
+        input[type="range"] {
+            flex: 1;
+            height: 3px;
+        }
+
+        input[type="range"]::-webkit-slider-thumb {
+            appearance: none;
+            width: 12px;
+            height: 12px;
+            border-radius: 50%;
+            background: #667eea;
+            cursor: pointer;
+        }
+
+        .status-display {
+            display: grid;
+            grid-template-columns: repeat(5, 1fr);
+            gap: 8px;
+            flex: 1;
+        }
+
+        .status-card {
+            background: white;
+            border: 1px solid #e9ecef;
+            border-radius: 6px;
+            padding: 8px;
+            text-align: center;
+            transition: all 0.3s ease;
+            height: 90px; /* 固定高度 */
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+        }
+
+        .status-card.active {
+            border-color: #28a745;
+            box-shadow: 0 2px 6px rgba(40, 167, 69, 0.2);
+        }
+
+        .status-card.warning {
+            border-color: #ffc107;
+            box-shadow: 0 2px 6px rgba(255, 193, 7, 0.2);
+        }
+
+        .status-card.danger {
+            border-color: #dc3545;
+            box-shadow: 0 2px 6px rgba(220, 53, 69, 0.2);
+        }
+
+        .status-card.motion {
+            border-color: #6f42c1;
+            box-shadow: 0 2px 6px rgba(111, 66, 193, 0.2);
+        }
+
+        .status-title {
+            font-size: 0.8em;
+            font-weight: bold;
+            color: #666;
+        }
+
+        .status-value {
+            font-size: 1.2em;
+            font-weight: bold;
+            overflow: hidden;
+            text-overflow: ellipsis;
+            display: -webkit-box;
+            -webkit-line-clamp: 2; /* 限制行数 */
+            line-clamp: 2; /* 标准属性 */
+            -webkit-box-orient: vertical;
+            max-height: 50px; /* 最大高度 */
+        }
+
+        .status-unit {
+            font-size: 0.7em;
+            color: #666;
+        }
+
+        .charts-section {
+            flex: 1;
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 10px;
+            overflow: hidden;
+        }
+
+        .chart-card {
+            background: white;
+            border: 1px solid #e9ecef;
+            border-radius: 6px;
+            padding: 10px;
+            display: flex;
+            flex-direction: column;
+        }
+
+        .chart-title {
+            font-size: 0.9em;
+            font-weight: bold;
+            margin-bottom: 8px;
+            color: #333;
+            text-align: center;
+        }
+
+        .chart-container {
+            flex: 1;
+            position: relative;
+            min-height: 150px;
+        }
+
+        .info-panel {
+            background: #f8f9fa;
+            padding: 8px;
+            border-radius: 6px;
+            margin-bottom: 8px;
+            height: 70px; /* 固定高度 */
+        }
+
+        .info-grid {
+            display: grid;
+            grid-template-columns: repeat(8, 1fr);
+            gap: 8px;
+            height: 100%;
+        }
+
+        .info-item {
+            text-align: center;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            height: 100%;
+        }
+
+        .info-label {
+            font-size: 0.7em;
+            color: #666;
+            margin-bottom: 2px;
+        }
+
+        .info-value {
+            font-size: 0.9em;
+            font-weight: bold;
+            color: #333;
+            overflow: hidden;
+            text-overflow: ellipsis;
+            white-space: nowrap;
+        }
+
+        .loading {
+            text-align: center;
+            padding: 20px;
+            color: #666;
+        }
+
+        .error {
+            background: #f8d7da;
+            color: #721c24;
+            padding: 8px;
+            border-radius: 4px;
+            margin-bottom: 8px;
+            font-size: 0.8em;
+        }
+
+        /* 响应式设计 */
+        @media (max-width: 1400px) {
+            .status-display {
+                grid-template-columns: repeat(3, 1fr);
+            }
+        }
+
+        @media (max-width: 1000px) {
+            .status-display {
+                grid-template-columns: repeat(2, 1fr);
+            }
+        }
+
+        .speed-controls {
+            display: flex;
+            gap: 8px;
+            align-items: center;
+            margin-top: 8px;
+        }
+        
+        #speed-select {
+            padding: 4px 8px;
+            border: 1px solid #ddd;
+            border-radius: 4px;
+            font-size: 12px;
+            background-color: #f8f9fa;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="header">
+            <h1>🏥 跌倒检测实时可视化系统</h1>
+            <p>基于传感器数据的智能跌倒检测与状态监控</p>
+        </div>
+
+        <div class="main-content">
+            <!-- 信息面板 -->
+            <div class="info-panel" id="info-panel" style="display: none;">
+                <div class="info-grid">
+                    <div class="info-item">
+                        <div class="info-label">总帧数</div>
+                        <div class="info-value" id="total-frames-info">0</div>
+                    </div>
+                    <div class="info-item">
+                        <div class="info-label">采样率</div>
+                        <div class="info-value" id="sample-rate-info">100 Hz</div>
+                    </div>
+                    <div class="info-item">
+                        <div class="info-label">总时长</div>
+                        <div class="info-value" id="duration-info">0.00s</div>
+                    </div>
+                    <div class="info-item">
+                        <div class="info-label">当前状态</div>
+                        <div class="info-value" id="current-state-info">未加载</div>
+                    </div>
+                    <div class="info-item">
+                        <div class="info-label">参与者ID</div>
+                        <div class="info-value" id="participant-id-info">-</div>
+                    </div>
+                    <div class="info-item">
+                        <div class="info-label">任务ID</div>
+                        <div class="info-value" id="task-id-info">-</div>
+                    </div>
+                    <div class="info-item">
+                        <div class="info-label">试验ID</div>
+                        <div class="info-value" id="trial-id-info">-</div>
+                    </div>
+                    <div class="info-item">
+                        <div class="info-label">活动类型</div>
+                        <div class="info-value" id="activity-type-info">-</div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- 顶部区域：控制面板 + 状态显示 -->
+            <div class="top-section">
+                <!-- 控制面板 -->
+                <div class="control-panel">
+                    <h3>🎮 控制面板</h3>
+                    
+                    <div class="dataset-selector">
+                        <label for="dataset-select">数据集:</label>
+                        <select id="dataset-select">
+                            <option value="">请选择...</option>
+                        </select>
+                        <button onclick="loadDataset()">加载</button>
+                    </div>
+
+                    <div class="playback-controls">
+                        <button id="play-btn" onclick="playPause()">▶️ 播放</button>
+                        <button id="stop-btn" onclick="stopPlayback()">⏹️ 停止</button>
+                        <button id="reset-btn" onclick="resetPlayback()">🔄 重置</button>
+                        
+                        <div class="slider-container">
+                            <span id="current-frame">0</span>
+                            <input type="range" id="frame-slider" min="0" max="100" value="0">
+                            <span id="total-frames">0</span>
+                        </div>
+                        
+                        <span id="current-time">0.00s</span>
+                    </div>
+                    
+                    <div class="speed-controls">
+                        <label for="speed-select">播放速度:</label>
+                        <select id="speed-select" onchange="changePlaybackSpeed()">
+                            <option value="0.5">0.5x</option>
+                            <option value="1" selected>1x</option>
+                            <option value="2">2x</option>
+                            <option value="5">5x</option>
+                            <option value="10">10x</option>
+                            <option value="20">20x</option>
+                            <option value="50">50x</option>
+                            <option value="100">100x</option>
+                            <option value="200">200x</option>
+                            <option value="500">500x</option>
+                        </select>
+                    </div>
+                </div>
+
+                <!-- 状态显示 -->
+                <div class="status-display" id="status-display" style="display: none;">
+                    <div class="status-card" id="acceleration-card">
+                        <div class="status-title">加速度合成值</div>
+                        <div class="status-value" id="acc-magnitude">0.00</div>
+                        <div class="status-unit">m/s²</div>
+                    </div>
+                    
+                    <div class="status-card" id="gyroscope-card">
+                        <div class="status-title">陀螺仪合成值</div>
+                        <div class="status-value" id="gyr-magnitude">0.00</div>
+                        <div class="status-unit">rad/s</div>
+                    </div>
+                    
+                    <div class="status-card" id="prediction-card">
+                        <div class="status-title">跌倒检测</div>
+                        <div class="status-value" id="predicted-state">正常</div>
+                        <div class="status-unit">置信度: <span id="confidence">0.00</span></div>
+                    </div>
+                    
+                    <div class="status-card" id="motion-card">
+                        <div class="status-title">运动状态</div>
+                        <div class="status-value" id="motion-state">静止</div>
+                        <div class="status-unit">置信度: <span id="motion-confidence">0.00</span></div>
+                    </div>
+                    
+                    <div class="status-card" id="true-label-card">
+                        <div class="status-title">真实标签</div>
+                        <div class="status-value" id="true-label">0</div>
+                        <div class="status-unit">0=正常, 1=跌倒</div>
+                    </div>
+                    
+                    <div class="status-card" id="fall-description-card" style="grid-column: 1 / -1;">
+                        <div class="status-title">跌倒描述</div>
+                        <div class="status-value" id="fall-description" style="overflow: auto; white-space: normal; text-overflow: initial; -webkit-line-clamp: initial; line-clamp: initial; max-height: 60px;">-</div>
+                        <div class="status-unit">跌倒详情</div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- 图表区域 -->
+            <div class="charts-section" id="charts-container" style="display: none;">
+                <div class="chart-card">
+                    <div class="chart-title">加速度数据</div>
+                    <div class="chart-container">
+                        <canvas id="acceleration-chart"></canvas>
+                    </div>
+                </div>
+                
+                <div class="chart-card">
+                    <div class="chart-title">陀螺仪数据</div>
+                    <div class="chart-container">
+                        <canvas id="gyroscope-chart"></canvas>
+                    </div>
+                </div>
+                
+                <div class="chart-card">
+                    <div class="chart-title">欧拉角数据</div>
+                    <div class="chart-container">
+                        <canvas id="euler-chart"></canvas>
+                    </div>
+                </div>
+                
+                <div class="chart-card">
+                    <div class="chart-title">状态预测</div>
+                    <div class="chart-container">
+                        <canvas id="prediction-chart"></canvas>
+                    </div>
+                </div>
+            </div>
+
+            <!-- 加载提示 -->
+            <div class="loading" id="loading">
+                <h3>请选择数据集开始可视化</h3>
+                <p>系统将实时显示传感器数据变化和状态预测结果</p>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        // 全局变量
+        let currentData = null;
+        let currentFrame = 0;
+        let isPlaying = false;
+        let frameTimer = null; // 用于控制帧率的定时器
+        let baseFrameRate = 5; // 基础帧率(帧/秒)，对应1x速度，降低基础帧率使速度差异更明显
+        let lastUpdateTime = 0; // 上次更新时间
+        let framesToSkip = 0; // 高速播放时需要跳过的帧数
+        let frameAccumulator = 0; // 帧累加器，用于处理低速播放
+        let playbackSpeed = 1; // 默认播放速度
+        let charts = {};
+
+        // 初始化
+        document.addEventListener('DOMContentLoaded', function() {
+            loadDatasetList();
+            initializeCharts();
+            
+            // 添加键盘事件监听
+            document.addEventListener('keydown', function(e) {
+                if (e.key === ' ' || e.key === 'Spacebar') {
+                    playPause(); // 空格键控制播放/暂停
+                    e.preventDefault();
+                } else if (e.key === 'Escape') {
+                    stopPlayback(); // ESC键停止播放
+                    e.preventDefault();
+                }
+            });
+
+            // 滑块事件
+            document.getElementById('frame-slider').addEventListener('input', function(e) {
+                if (!isPlaying) {
+                    currentFrame = parseInt(e.target.value);
+                    loadFrameData(currentFrame);
+                }
+            });
+        });
+
+        // 加载数据集列表
+        async function loadDatasetList() {
+            try {
+                const response = await axios.get('/api/datasets');
+                const datasets = response.data;
+                
+                const select = document.getElementById('dataset-select');
+                select.innerHTML = '<option value="">请选择数据集...</option>';
+                
+                datasets.forEach(dataset => {
+                    const option = document.createElement('option');
+                    option.value = dataset.path;
+                    option.textContent = dataset.name;
+                    
+                    // 添加数据属性
+                    if (dataset.participant_id !== undefined) {
+                        option.dataset.participantId = dataset.participant_id;
+                    }
+                    if (dataset.activity_type !== undefined) {
+                        option.dataset.activityType = dataset.activity_type;
+                    }
+                    
+                    select.appendChild(option);
+                });
+            } catch (error) {
+                console.error('加载数据集列表失败:', error);
+            }
+        }
+
+        // 加载数据集
+        async function loadDataset() {
+            const select = document.getElementById('dataset-select');
+            const selectedOption = select.options[select.selectedIndex];
+            const filePath = select.value;
+            
+            if (!filePath) {
+                alert('请选择数据集');
+                return;
+            }
+
+            try {
+                document.getElementById('loading').style.display = 'block';
+                document.getElementById('status-display').style.display = 'none';
+                document.getElementById('charts-container').style.display = 'none';
+                document.getElementById('info-panel').style.display = 'none';
+
+                const response = await axios.post('/api/load_data', {
+                    file_path: filePath,
+                    participant_id: selectedOption.dataset.participantId || null,
+                    activity_type: selectedOption.dataset.activityType || null
+                });
+
+                if (response.data.success) {
+                    currentData = response.data.info;
+                    currentFrame = 0;
+                    
+                    // 更新UI
+                    document.getElementById('total-frames').textContent = currentData.total_frames;
+                    document.getElementById('total-frames-info').textContent = currentData.total_frames;
+                    document.getElementById('sample-rate-info').textContent = currentData.sample_rate + ' Hz';
+                    document.getElementById('duration-info').textContent = currentData.duration.toFixed(2) + 's';
+                    
+                    // 更新滑块
+                    const slider = document.getElementById('frame-slider');
+                    slider.max = currentData.total_frames - 1;
+                    slider.value = 0;
+                    
+                    // 显示面板
+                    document.getElementById('loading').style.display = 'none';
+                    document.getElementById('status-display').style.display = 'grid';
+                    document.getElementById('charts-container').style.display = 'grid';
+                    document.getElementById('info-panel').style.display = 'flex';
+                    
+                    // 加载第一帧数据
+                    loadFrameData(0);
+                } else {
+                    throw new Error(response.data.error);
+                }
+            } catch (error) {
+                console.error('加载数据集失败:', error);
+                alert('加载数据集失败: ' + error.message);
+                document.getElementById('loading').style.display = 'block';
+            }
+        }
+
+        // 播放/暂停
+        function playPause() {
+            if (!currentData) return;
+            
+            if (isPlaying) {
+                pausePlayback();
+            } else {
+                startPlayback();
+            }
+        }
+
+        // 开始播放
+        function startPlayback() {
+            if (!currentData) return;
+            
+            console.log("开始播放，倍速:", playbackSpeed);
+            isPlaying = true;
+            document.getElementById('play-btn').textContent = '⏸️ 暂停';
+            
+            // 确保清除所有现有的计时器
+            if (frameTimer) {
+                clearInterval(frameTimer);
+                frameTimer = null;
+            }
+            
+            // 计算播放参数
+            let interval = 1000 / baseFrameRate; // 基础间隔时间(ms)
+            
+            // 处理不同速度范围
+            if (playbackSpeed < 1) {
+                // 低速播放：保持正常间隔，但不是每次都更新帧
+                interval = 200; // 固定200ms的更新频率
+                framesToSkip = 0;
+            } else if (playbackSpeed <= 10) {
+                // 正常到中速：调整间隔时间
+                interval = Math.max(20, 1000 / (baseFrameRate * playbackSpeed));
+                framesToSkip = 0;
+            } else {
+                // 高速播放：固定较短间隔，但每次更新多帧
+                interval = 20; // 固定20ms的高更新频率
+                framesToSkip = Math.floor(playbackSpeed / 10); // 每次更新跳过的帧数
+            }
+            
+            console.log(`播放设置: 基础帧率=${baseFrameRate}帧/秒, 倍速=${playbackSpeed}x, 间隔=${interval}ms, 跳帧=${framesToSkip}`);
+            
+            lastUpdateTime = Date.now();
+            frameAccumulator = 0;
+            
+            // 使用setInterval以固定间隔播放帧
+            frameTimer = setInterval(() => {
+                if (!isPlaying) {
+                    clearInterval(frameTimer);
+                    frameTimer = null;
+                    return;
+                }
+                
+                const now = Date.now();
+                const deltaTime = now - lastUpdateTime;
+                lastUpdateTime = now;
+                
+                // 对于低速播放，累积时间直到达到阈值
+                if (playbackSpeed < 1) {
+                    frameAccumulator += deltaTime * playbackSpeed;
+                    if (frameAccumulator < 100) { // 100ms阈值
+                        return; // 未达到更新阈值，跳过此次更新
+                    }
+                    frameAccumulator = 0;
+                }
+                
+                // 计算这次间隔应该前进的帧数
+                let framesToAdvance = 1;
+                if (framesToSkip > 0) {
+                    framesToAdvance = 1 + framesToSkip;
+                }
+                
+                // 前进指定帧数
+                currentFrame += framesToAdvance;
+                if (currentFrame >= currentData.total_frames) {
+                    currentFrame = 0; // 循环播放
+                }
+                
+                loadFrameData(currentFrame)
+                    .catch(error => {
+                        console.error("加载帧数据失败:", error);
+                        pausePlayback();
+                    });
+            }, interval);
+        }
+
+        // 暂停播放
+        function pausePlayback() {
+            console.log("暂停播放");
+            isPlaying = false;
+            document.getElementById('play-btn').textContent = '▶️ 播放';
+            
+            if (frameTimer) {
+                clearInterval(frameTimer);
+                frameTimer = null;
+            }
+        }
+
+        // 停止播放
+        function stopPlayback() {
+            console.log("停止播放");
+            isPlaying = false;
+            document.getElementById('play-btn').textContent = '▶️ 播放';
+            
+            if (frameTimer) {
+                clearInterval(frameTimer);
+                frameTimer = null;
+            }
+            
+            currentFrame = 0;
+            loadFrameData(currentFrame);
+        }
+
+        // 重置播放
+        function resetPlayback() {
+            console.log("重置播放");
+            isPlaying = false;
+            document.getElementById('play-btn').textContent = '▶️ 播放';
+            
+            if (frameTimer) {
+                clearInterval(frameTimer);
+                frameTimer = null;
+            }
+            
+            currentFrame = 0;
+            loadFrameData(currentFrame);
+            
+            // 清空图表数据
+            Object.values(charts).forEach(chart => {
+                chart.data.labels = [];
+                chart.data.datasets.forEach(dataset => dataset.data = []);
+                chart.update();
+            });
+        }
+
+        // 清除所有计时器
+        function clearAllTimers() {
+            if (frameTimer) {
+                clearInterval(frameTimer);
+                frameTimer = null;
+            }
+        }
+
+        // 更改播放速度
+        function changePlaybackSpeed() {
+            const speedSelect = document.getElementById('speed-select');
+            playbackSpeed = parseFloat(speedSelect.value);
+            
+            console.log(`播放速度更改为: ${playbackSpeed}x`);
+            
+            // 如果当前正在播放，重新启动播放以应用新速度
+            if (isPlaying) {
+                // 先清除现有的计时器
+                if (frameTimer) {
+                    clearInterval(frameTimer);
+                    frameTimer = null;
+                }
+                // 重新开始播放
+                startPlayback();
+            }
+        }
+
+        // 加载帧数据 - 返回Promise以便链式调用
+        async function loadFrameData(frameId) {
+            try {
+                const response = await axios.get(`/api/frame_data/${frameId}`);
+                const data = response.data;
+                
+                // 更新状态显示
+                updateStatusDisplay(data);
+                
+                // 更新图表
+                updateCharts(data);
+                
+                // 更新控制面板
+                document.getElementById('current-frame').textContent = frameId;
+                document.getElementById('frame-slider').value = frameId;
+                document.getElementById('current-time').textContent = data.timestamp.toFixed(2) + 's';
+                document.getElementById('current-state-info').textContent = data.predicted_state;
+                
+                // 更新参与者信息
+                if (data.participant_id !== undefined) {
+                    document.getElementById('participant-id-info').textContent = data.participant_id;
+                }
+                if (data.task_id !== undefined) {
+                    document.getElementById('task-id-info').textContent = data.task_id;
+                }
+                if (data.trial_id !== undefined) {
+                    document.getElementById('trial-id-info').textContent = data.trial_id;
+                }
+                if (data.activity_type !== undefined) {
+                    document.getElementById('activity-type-info').textContent = data.activity_type;
+                }
+                
+                return data;
+            } catch (error) {
+                console.error('加载帧数据失败:', error);
+                throw error;
+            }
+        }
+
+        // 更新状态显示
+        function updateStatusDisplay(data) {
+            // 计算合成值
+            const accMagnitude = Math.sqrt(data.AccX**2 + data.AccY**2 + data.AccZ**2);
+            const gyrMagnitude = Math.sqrt(data.GyrX**2 + data.GyrY**2 + data.GyrZ**2);
+            
+            // 更新显示
+            document.getElementById('acc-magnitude').textContent = accMagnitude.toFixed(2);
+            document.getElementById('gyr-magnitude').textContent = gyrMagnitude.toFixed(2);
+            document.getElementById('predicted-state').textContent = data.predicted_state;
+            document.getElementById('confidence').textContent = (data.confidence * 100).toFixed(1) + '%';
+            document.getElementById('motion-state').textContent = data.motion_state;
+            document.getElementById('motion-confidence').textContent = (data.motion_confidence * 100).toFixed(1) + '%';
+            document.getElementById('true-label').textContent = data.label;
+            
+            // 更新跌倒描述
+            if (data.fall_description) {
+                const descElement = document.getElementById('fall-description');
+                descElement.textContent = data.fall_description;
+                descElement.title = data.fall_description; // 添加tooltip
+                document.getElementById('fall-description-card').style.display = 'flex';
+            } else {
+                document.getElementById('fall-description').textContent = '-';
+                document.getElementById('fall-description').title = ''; // 清除tooltip
+                // 根据预测状态或真实标签决定是否显示跌倒描述卡片
+                if (data.predicted_state === '跌倒' || data.label === 1 || data.activity_type === 'fall') {
+                    document.getElementById('fall-description-card').style.display = 'flex';
+                } else {
+                    document.getElementById('fall-description-card').style.display = 'none';
+                }
+            }
+            
+            // 更新状态卡片样式
+            updateStatusCardStyle('acceleration-card', accMagnitude, 1.5, 2.0);
+            updateStatusCardStyle('gyroscope-card', gyrMagnitude, 1.0, 1.5);
+            updateStatusCardStyle('prediction-card', data.confidence, 0.6, 0.8);
+            updateMotionCardStyle('motion-card', data.motion_color);
+            
+            // 高亮显示跌倒标签
+            const trueLabelCard = document.getElementById('true-label-card');
+            trueLabelCard.className = 'status-card';
+            if (data.label === 1) {
+                trueLabelCard.classList.add('danger');
+                trueLabelCard.style.borderColor = '#dc3545';
+                trueLabelCard.style.boxShadow = '0 2px 6px rgba(220, 53, 69, 0.5)';
+            } else {
+                trueLabelCard.classList.add('active');
+            }
+        }
+
+        // 更新状态卡片样式
+        function updateStatusCardStyle(cardId, value, warningThreshold, dangerThreshold) {
+            const card = document.getElementById(cardId);
+            card.className = 'status-card';
+            
+            if (value >= dangerThreshold) {
+                card.classList.add('danger');
+            } else if (value >= warningThreshold) {
+                card.classList.add('warning');
+            } else {
+                card.classList.add('active');
+            }
+        }
+
+        // 更新运动状态卡片样式
+        function updateMotionCardStyle(cardId, color) {
+            const card = document.getElementById(cardId);
+            card.className = 'status-card motion';
+            card.style.borderColor = color;
+            card.style.boxShadow = `0 2px 6px ${color}40`;
+        }
+
+        // 初始化图表
+        function initializeCharts() {
+            const chartOptions = {
+                responsive: true,
+                maintainAspectRatio: false,
+                animation: {
+                    duration: 100
+                },
+                scales: {
+                    x: {
+                        display: true,
+                        title: {
+                            display: true,
+                            text: '时间 (s)',
+                            font: { size: 8 }
+                        },
+                        ticks: { font: { size: 8 } }
+                    },
+                    y: {
+                        display: true,
+                        title: {
+                            display: true,
+                            text: '数值',
+                            font: { size: 8 }
+                        },
+                        ticks: { font: { size: 8 } }
+                    }
+                },
+                plugins: {
+                    legend: {
+                        labels: { font: { size: 8 } }
+                    }
+                }
+            };
+
+            // 加速度图表
+            charts.acceleration = new Chart(
+                document.getElementById('acceleration-chart'),
+                {
+                    type: 'line',
+                    data: {
+                        labels: [],
+                        datasets: [
+                            { label: 'AccX', data: [], borderColor: 'red', backgroundColor: 'rgba(255,0,0,0.1)', borderWidth: 1 },
+                            { label: 'AccY', data: [], borderColor: 'green', backgroundColor: 'rgba(0,255,0,0.1)', borderWidth: 1 },
+                            { label: 'AccZ', data: [], borderColor: 'blue', backgroundColor: 'rgba(0,0,255,0.1)', borderWidth: 1 }
+                        ]
+                    },
+                    options: chartOptions
+                }
+            );
+
+            // 陀螺仪图表
+            charts.gyroscope = new Chart(
+                document.getElementById('gyroscope-chart'),
+                {
+                    type: 'line',
+                    data: {
+                        labels: [],
+                        datasets: [
+                            { label: 'GyrX', data: [], borderColor: 'orange', backgroundColor: 'rgba(255,165,0,0.1)', borderWidth: 1 },
+                            { label: 'GyrY', data: [], borderColor: 'purple', backgroundColor: 'rgba(128,0,128,0.1)', borderWidth: 1 },
+                            { label: 'GyrZ', data: [], borderColor: 'brown', backgroundColor: 'rgba(165,42,42,0.1)', borderWidth: 1 }
+                        ]
+                    },
+                    options: chartOptions
+                }
+            );
+
+            // 欧拉角图表
+            charts.euler = new Chart(
+                document.getElementById('euler-chart'),
+                {
+                    type: 'line',
+                    data: {
+                        labels: [],
+                        datasets: [
+                            { label: 'EulerX', data: [], borderColor: 'pink', backgroundColor: 'rgba(255,192,203,0.1)', borderWidth: 1 },
+                            { label: 'EulerY', data: [], borderColor: 'cyan', backgroundColor: 'rgba(0,255,255,0.1)', borderWidth: 1 },
+                            { label: 'EulerZ', data: [], borderColor: 'lime', backgroundColor: 'rgba(0,255,0,0.1)', borderWidth: 1 }
+                        ]
+                    },
+                    options: chartOptions
+                }
+            );
+
+            // 预测图表
+            charts.prediction = new Chart(
+                document.getElementById('prediction-chart'),
+                {
+                    type: 'line',
+                    data: {
+                        labels: [],
+                        datasets: [
+                            { label: '置信度', data: [], borderColor: 'black', backgroundColor: 'rgba(0,0,0,0.1)', borderWidth: 2 },
+                            { label: '真实标签', data: [], borderColor: 'gray', backgroundColor: 'rgba(128,128,128,0.1)', borderWidth: 1 }
+                        ]
+                    },
+                    options: chartOptions
+                }
+            );
+        }
+
+        // 更新图表
+        function updateCharts(data) {
+            const timestamp = data.timestamp;
+            
+            // 更新加速度图表
+            charts.acceleration.data.labels.push(timestamp.toFixed(2));
+            charts.acceleration.data.datasets[0].data.push(data.AccX);
+            charts.acceleration.data.datasets[1].data.push(data.AccY);
+            charts.acceleration.data.datasets[2].data.push(data.AccZ);
+            
+            // 更新陀螺仪图表
+            charts.gyroscope.data.labels.push(timestamp.toFixed(2));
+            charts.gyroscope.data.datasets[0].data.push(data.GyrX);
+            charts.gyroscope.data.datasets[1].data.push(data.GyrY);
+            charts.gyroscope.data.datasets[2].data.push(data.GyrZ);
+            
+            // 更新欧拉角图表
+            charts.euler.data.labels.push(timestamp.toFixed(2));
+            charts.euler.data.datasets[0].data.push(data.EulerX);
+            charts.euler.data.datasets[1].data.push(data.EulerY);
+            charts.euler.data.datasets[2].data.push(data.EulerZ);
+            
+            // 更新预测图表
+            charts.prediction.data.labels.push(timestamp.toFixed(2));
+            charts.prediction.data.datasets[0].data.push(data.confidence);
+            charts.prediction.data.datasets[1].data.push(data.label);
+            
+            // 限制数据点数量（保持最近30个点，减少内存使用）
+            const maxPoints = 30;
+            if (charts.acceleration.data.labels.length > maxPoints) {
+                charts.acceleration.data.labels.shift();
+                charts.acceleration.data.datasets.forEach(dataset => dataset.data.shift());
+            }
+            if (charts.gyroscope.data.labels.length > maxPoints) {
+                charts.gyroscope.data.labels.shift();
+                charts.gyroscope.data.datasets.forEach(dataset => dataset.data.shift());
+            }
+            if (charts.euler.data.labels.length > maxPoints) {
+                charts.euler.data.labels.shift();
+                charts.euler.data.datasets.forEach(dataset => dataset.data.shift());
+            }
+            if (charts.prediction.data.labels.length > maxPoints) {
+                charts.prediction.data.labels.shift();
+                charts.prediction.data.datasets.forEach(dataset => dataset.data.shift());
+            }
+            
+            // 更新图表
+            charts.acceleration.update('none'); // 禁用动画提高性能
+            charts.gyroscope.update('none');
+            charts.euler.update('none');
+            charts.prediction.update('none');
+        }
+    </script>
+</body>
+</html>

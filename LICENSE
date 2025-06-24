@@ -1,0 +1,34 @@
+修改版MIT许可证 (Modified MIT License)
+
+版权所有 (c) 2025 tingyu Chen / Donghua University
+
+特此免费授予任何获得本软件及相关文档文件（"软件"）副本的人无限制地处理本软件的权利，
+包括但不限于使用、复制、修改、合并、发布、分发、再许可和/或销售软件副本的权利，
+并允许向其提供软件的人员这样做，但须符合以下条件：
+
+上述版权声明和本许可声明应包含在软件的所有副本或重要部分中。
+
+本软件按"原样"提供，不提供任何形式的明示或暗示的保证，包括但不限于对适销性、
+特定用途的适用性和不侵权的保证。在任何情况下，作者或版权持有人均不对因软件或
+软件的使用或其他交易而产生、引起或与之相关的任何索赔、损害或其他责任负责，
+无论是合同行为、侵权行为还是其他行为。
+
+附加条件：
+
+1. 学术引用要求：如果您在学术研究中使用本项目的代码或方法，必须在您的论文或报告中
+   引用本项目。推荐的引用格式为：
+
+   @misc{elderlyfalldetection2024,
+     author = {tingyu Chen/xuanhan Liu},
+     title = {基于多种深度学习模型的老年人跌倒检测系统},
+     year = {2025},
+     publisher = {GitHub},
+     journal = {GitHub Repository},
+     howpublished = {\url{https://github.com/lansijian/elderly-fall-detection}}
+   }
+
+2. 商业使用限制：若将本项目用于商业产品或服务，需事先获得作者的书面许可。
+   联系方式：2033374848@qq.com
+
+3. 衍生作品要求：基于本项目创建的衍生作品必须保持开源，并明确标注基于本项目开发，
+   包括提供指向本项目的链接（https://github.com/lansijian/elderly-fall-detection）。 

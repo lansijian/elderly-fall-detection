@@ -1,0 +1,481 @@
+participant_id,task_id,trial_id,description,total_frames,fall_frames,non_fall_frames,fall_ratio
+SA06,20.0,R01,Forward fall when trying to sit down,536,79,457,0.14738805970149255
+SA06,21.0,R01,Backward fall when trying to sit down,470,40,430,0.0851063829787234
+SA06,22.0,R01,lateral fall when trying to sit down,447,67,380,0.14988814317673377
+SA06,23.0,R01,Forward fall when trying to get up,453,87,366,0.19205298013245034
+SA06,24.0,R01,lateral fall when trying to get up,550,72,478,0.13090909090909092
+SA06,25.0,R02,"Forward fall while sitting, caused by fainting",479,105,374,0.21920668058455114
+SA06,26.0,R01,"lateral fall while sitting, caused by fainting",443,77,366,0.17381489841986456
+SA06,27.0,R01,"Backward fall while sitting, caused by fainting",357,39,318,0.1092436974789916
+SA06,28.0,R01,Vertical(forward) fall while walking caused by fainting,677,58,619,0.08567208271787297
+SA06,29.0,R01,"Fall while walking, with use of hands in a table to dampen fall, caused by fainting",788,87,701,0.11040609137055837
+SA06,30.0,R01,Forward fall while walking caused by a trip,602,76,526,0.12624584717607973
+SA06,31.0,R01,Forward fall while jogging caused by a trip,583,76,507,0.13036020583190394
+SA06,32.0,R01,Forward fall while walking caused by a slip,651,50,601,0.07680491551459294
+SA06,33.0,R01,Forward lateral fall while walking caused by a slip,637,60,577,0.09419152276295134
+SA06,34.0,R01,Backward fall while walking caused by a slip,744,66,678,0.08870967741935484
+SA07,20.0,R01,Forward fall when trying to sit down,589,101,488,0.17147707979626486
+SA07,21.0,R01,Backward fall when trying to sit down,517,51,466,0.09864603481624758
+SA07,22.0,R01,lateral fall when trying to sit down,580,84,496,0.14482758620689656
+SA07,23.0,R01,Forward fall when trying to get up,604,88,516,0.1456953642384106
+SA07,24.0,R01,lateral fall when trying to get up,652,94,558,0.1441717791411043
+SA07,25.0,R01,"Forward fall while sitting, caused by fainting",679,98,581,0.14432989690721648
+SA07,26.0,R01,"lateral fall while sitting, caused by fainting",559,89,470,0.1592128801431127
+SA07,27.0,R04,"Backward fall while sitting, caused by fainting",513,49,464,0.09551656920077972
+SA07,28.0,R01,Vertical(forward) fall while walking caused by fainting,710,87,623,0.12253521126760564
+SA07,29.0,R02,"Fall while walking, with use of hands in a table to dampen fall, caused by fainting",835,70,765,0.08383233532934131
+SA07,30.0,R06,Forward fall while walking caused by a trip,790,82,708,0.10379746835443038
+SA07,31.0,R02,Forward fall while jogging caused by a trip,689,80,609,0.11611030478955008
+SA07,32.0,R01,Forward fall while walking caused by a slip,822,77,745,0.09367396593673966
+SA07,33.0,R01,Forward lateral fall while walking caused by a slip,928,80,848,0.08620689655172414
+SA07,34.0,R01,Backward fall while walking caused by a slip,986,69,917,0.06997971602434078
+SA08,20.0,R02,Forward fall when trying to sit down,601,104,497,0.17304492512479203
+SA08,21.0,R01,Backward fall when trying to sit down,523,45,478,0.08604206500956023
+SA08,22.0,R01,lateral fall when trying to sit down,578,57,521,0.0986159169550173
+SA08,23.0,R01,Forward fall when trying to get up,541,73,468,0.13493530499075784
+SA08,24.0,R01,lateral fall when trying to get up,602,48,554,0.07973421926910298
+SA08,25.0,R01,"Forward fall while sitting, caused by fainting",622,116,506,0.1864951768488746
+SA08,26.0,R01,"lateral fall while sitting, caused by fainting",576,87,489,0.15104166666666666
+SA08,27.0,R01,"Backward fall while sitting, caused by fainting",484,47,437,0.09710743801652892
+SA08,28.0,R01,Vertical(forward) fall while walking caused by fainting,847,84,763,0.09917355371900827
+SA08,29.0,R01,"Fall while walking, with use of hands in a table to dampen fall, caused by fainting",970,65,905,0.06701030927835051
+SA08,30.0,R01,Forward fall while walking caused by a trip,732,69,663,0.0942622950819672
+SA08,31.0,R01,Forward fall while jogging caused by a trip,614,63,551,0.10260586319218241
+SA08,32.0,R01,Forward fall while walking caused by a slip,759,55,704,0.07246376811594203
+SA08,33.0,R01,Forward lateral fall while walking caused by a slip,762,57,705,0.07480314960629922
+SA08,34.0,R01,Backward fall while walking caused by a slip,825,64,761,0.07757575757575758
+SA09,20.0,R02,Forward fall when trying to sit down,690,82,608,0.11884057971014493
+SA09,21.0,R01,Backward fall when trying to sit down,580,48,532,0.08275862068965517
+SA09,22.0,R01,lateral fall when trying to sit down,694,63,631,0.09077809798270893
+SA09,23.0,R01,Forward fall when trying to get up,563,85,478,0.15097690941385436
+SA09,24.0,R01,lateral fall when trying to get up,545,63,482,0.11559633027522936
+SA09,25.0,R01,"Forward fall while sitting, caused by fainting",548,94,454,0.17153284671532848
+SA09,26.0,R01,"lateral fall while sitting, caused by fainting",498,89,409,0.178714859437751
+SA09,27.0,R01,"Backward fall while sitting, caused by fainting",538,74,464,0.137546468401487
+SA09,28.0,R01,Vertical(forward) fall while walking caused by fainting,748,87,661,0.1163101604278075
+SA09,29.0,R01,"Fall while walking, with use of hands in a table to dampen fall, caused by fainting",810,59,751,0.0728395061728395
+SA09,30.0,R01,Forward fall while walking caused by a trip,667,67,600,0.10044977511244378
+SA09,31.0,R01,Forward fall while jogging caused by a trip,582,113,469,0.19415807560137457
+SA09,32.0,R01,Forward fall while walking caused by a slip,660,79,581,0.11969696969696969
+SA09,33.0,R01,Forward lateral fall while walking caused by a slip,706,48,658,0.0679886685552408
+SA09,34.0,R01,Backward fall while walking caused by a slip,746,75,671,0.10053619302949061
+SA10,20.0,R01,Forward fall when trying to sit down,530,76,454,0.14339622641509434
+SA10,21.0,R01,Backward fall when trying to sit down,552,53,499,0.09601449275362318
+SA10,22.0,R01,lateral fall when trying to sit down,546,73,473,0.1336996336996337
+SA10,23.0,R01,Forward fall when trying to get up,607,95,512,0.15650741350906094
+SA10,24.0,R01,lateral fall when trying to get up,634,61,573,0.09621451104100946
+SA10,25.0,R01,"Forward fall while sitting, caused by fainting",533,112,421,0.2101313320825516
+SA10,26.0,R01,"lateral fall while sitting, caused by fainting",555,97,458,0.17477477477477477
+SA10,27.0,R01,"Backward fall while sitting, caused by fainting",623,68,555,0.10914927768860354
+SA10,28.0,R01,Vertical(forward) fall while walking caused by fainting,819,91,728,0.1111111111111111
+SA10,29.0,R01,"Fall while walking, with use of hands in a table to dampen fall, caused by fainting",936,73,863,0.07799145299145299
+SA10,30.0,R01,Forward fall while walking caused by a trip,736,72,664,0.09782608695652174
+SA10,31.0,R01,Forward fall while jogging caused by a trip,574,73,501,0.12717770034843207
+SA10,32.0,R01,Forward fall while walking caused by a slip,616,54,562,0.08766233766233766
+SA10,33.0,R01,Forward lateral fall while walking caused by a slip,730,65,665,0.08904109589041095
+SA10,34.0,R01,Backward fall while walking caused by a slip,783,56,727,0.07151979565772669
+SA11,20.0,R01,Forward fall when trying to sit down,588,63,525,0.10714285714285714
+SA11,21.0,R01,Backward fall when trying to sit down,647,43,604,0.06646058732612056
+SA11,22.0,R01,lateral fall when trying to sit down,543,51,492,0.09392265193370165
+SA11,23.0,R01,Forward fall when trying to get up,693,77,616,0.1111111111111111
+SA11,24.0,R01,lateral fall when trying to get up,615,54,561,0.08780487804878048
+SA11,25.0,R01,"Forward fall while sitting, caused by fainting",632,87,545,0.13765822784810128
+SA11,26.0,R01,"lateral fall while sitting, caused by fainting",646,82,564,0.12693498452012383
+SA11,27.0,R01,"Backward fall while sitting, caused by fainting",590,53,537,0.08983050847457627
+SA11,28.0,R01,Vertical(forward) fall while walking caused by fainting,836,88,748,0.10526315789473684
+SA11,29.0,R01,"Fall while walking, with use of hands in a table to dampen fall, caused by fainting",913,53,860,0.05805038335158817
+SA11,30.0,R01,Forward fall while walking caused by a trip,828,68,760,0.0821256038647343
+SA11,31.0,R01,Forward fall while jogging caused by a trip,611,58,553,0.09492635024549918
+SA11,32.0,R01,Forward fall while walking caused by a slip,688,66,622,0.09593023255813954
+SA11,33.0,R01,Forward lateral fall while walking caused by a slip,693,49,644,0.0707070707070707
+SA11,34.0,R01,Backward fall while walking caused by a slip,799,56,743,0.07008760951188986
+SA12,20.0,R01,Forward fall when trying to sit down,731,87,644,0.11901504787961696
+SA12,21.0,R01,Backward fall when trying to sit down,629,47,582,0.07472178060413355
+SA12,22.0,R01,lateral fall when trying to sit down,632,56,576,0.08860759493670886
+SA12,23.0,R01,Forward fall when trying to get up,658,84,574,0.1276595744680851
+SA12,24.0,R01,lateral fall when trying to get up,822,64,758,0.07785888077858881
+SA12,25.0,R01,"Forward fall while sitting, caused by fainting",648,105,543,0.16203703703703703
+SA12,26.0,R01,"lateral fall while sitting, caused by fainting",664,91,573,0.13704819277108435
+SA12,27.0,R01,"Backward fall while sitting, caused by fainting",629,66,563,0.10492845786963434
+SA12,28.0,R01,Vertical(forward) fall while walking caused by fainting,732,68,664,0.09289617486338798
+SA12,29.0,R01,"Fall while walking, with use of hands in a table to dampen fall, caused by fainting",792,60,732,0.07575757575757576
+SA12,30.0,R01,Forward fall while walking caused by a trip,603,66,537,0.10945273631840796
+SA12,31.0,R01,Forward fall while jogging caused by a trip,558,80,478,0.14336917562724014
+SA12,32.0,R01,Forward fall while walking caused by a slip,593,81,512,0.13659359190556492
+SA12,33.0,R01,Forward lateral fall while walking caused by a slip,644,52,592,0.08074534161490683
+SA12,34.0,R01,Backward fall while walking caused by a slip,721,53,668,0.07350901525658807
+SA13,20.0,R01,Forward fall when trying to sit down,657,61,596,0.0928462709284627
+SA13,21.0,R01,Backward fall when trying to sit down,676,44,632,0.0650887573964497
+SA13,22.0,R01,lateral fall when trying to sit down,706,54,652,0.0764872521246459
+SA13,23.0,R01,Forward fall when trying to get up,787,68,719,0.08640406607369759
+SA13,24.0,R01,lateral fall when trying to get up,747,54,693,0.07228915662650602
+SA13,25.0,R01,"Forward fall while sitting, caused by fainting",790,89,701,0.11265822784810127
+SA13,26.0,R01,"lateral fall while sitting, caused by fainting",745,72,673,0.09664429530201342
+SA13,27.0,R01,"Backward fall while sitting, caused by fainting",657,65,592,0.0989345509893455
+SA13,28.0,R01,Vertical(forward) fall while walking caused by fainting,744,60,684,0.08064516129032258
+SA13,29.0,R01,"Fall while walking, with use of hands in a table to dampen fall, caused by fainting",810,63,747,0.07777777777777778
+SA13,30.0,R01,Forward fall while walking caused by a trip,646,63,583,0.09752321981424149
+SA13,31.0,R01,Forward fall while jogging caused by a trip,623,55,568,0.08828250401284109
+SA13,32.0,R01,Forward fall while walking caused by a slip,656,42,614,0.06402439024390244
+SA13,33.0,R01,Forward lateral fall while walking caused by a slip,707,56,651,0.07920792079207921
+SA13,34.0,R01,Backward fall while walking caused by a slip,785,53,732,0.06751592356687898
+SA14,20.0,R01,Forward fall when trying to sit down,627,76,551,0.12121212121212122
+SA14,21.0,R01,Backward fall when trying to sit down,595,50,545,0.08403361344537816
+SA14,22.0,R01,lateral fall when trying to sit down,641,51,590,0.07956318252730109
+SA14,23.0,R01,Forward fall when trying to get up,694,75,619,0.10806916426512968
+SA14,24.0,R01,lateral fall when trying to get up,698,63,635,0.09025787965616046
+SA14,25.0,R02,"Forward fall while sitting, caused by fainting",715,86,629,0.12027972027972028
+SA14,26.0,R01,"lateral fall while sitting, caused by fainting",620,69,551,0.11129032258064517
+SA14,27.0,R01,"Backward fall while sitting, caused by fainting",709,58,651,0.08180535966149506
+SA14,28.0,R01,Vertical(forward) fall while walking caused by fainting,781,85,696,0.1088348271446863
+SA14,29.0,R01,"Fall while walking, with use of hands in a table to dampen fall, caused by fainting",960,55,905,0.057291666666666664
+SA14,30.0,R01,Forward fall while walking caused by a trip,659,70,589,0.1062215477996965
+SA14,31.0,R02,Forward fall while jogging caused by a trip,627,68,559,0.10845295055821372
+SA14,32.0,R01,Forward fall while walking caused by a slip,626,71,555,0.1134185303514377
+SA14,33.0,R01,Forward lateral fall while walking caused by a slip,684,65,619,0.09502923976608187
+SA14,34.0,R01,Backward fall while walking caused by a slip,739,54,685,0.07307171853856563
+SA15,20.0,R01,Forward fall when trying to sit down,509,73,436,0.14341846758349705
+SA15,21.0,R01,Backward fall when trying to sit down,659,52,607,0.07890743550834597
+SA15,22.0,R01,lateral fall when trying to sit down,687,57,630,0.08296943231441048
+SA15,23.0,R01,Forward fall when trying to get up,688,85,603,0.12354651162790697
+SA15,24.0,R01,lateral fall when trying to get up,738,95,643,0.12872628726287264
+SA15,25.0,R01,"Forward fall while sitting, caused by fainting",790,90,700,0.11392405063291139
+SA15,26.0,R01,"lateral fall while sitting, caused by fainting",716,75,641,0.10474860335195531
+SA15,27.0,R01,"Backward fall while sitting, caused by fainting",739,78,661,0.10554803788903924
+SA15,28.0,R01,Vertical(forward) fall while walking caused by fainting,823,93,730,0.11300121506682867
+SA15,29.0,R01,"Fall while walking, with use of hands in a table to dampen fall, caused by fainting",891,69,822,0.07744107744107744
+SA15,30.0,R01,Forward fall while walking caused by a trip,661,62,599,0.09379727685325265
+SA15,31.0,R01,Forward fall while jogging caused by a trip,611,59,552,0.09656301145662848
+SA15,32.0,R01,Forward fall while walking caused by a slip,632,71,561,0.11234177215189874
+SA15,33.0,R01,Forward lateral fall while walking caused by a slip,697,64,633,0.09182209469153516
+SA15,34.0,R01,Backward fall while walking caused by a slip,777,72,705,0.09266409266409266
+SA16,20.0,R01,Forward fall when trying to sit down,582,65,517,0.11168384879725086
+SA16,21.0,R01,Backward fall when trying to sit down,589,45,544,0.07640067911714771
+SA16,22.0,R01,lateral fall when trying to sit down,696,65,631,0.09339080459770115
+SA16,23.0,R01,Forward fall when trying to get up,731,61,670,0.08344733242134063
+SA16,24.0,R01,lateral fall when trying to get up,722,62,660,0.08587257617728532
+SA16,25.0,R01,"Forward fall while sitting, caused by fainting",733,78,655,0.10641200545702592
+SA16,26.0,R01,"Backward fall while sitting, caused by fainting",693,81,612,0.11688311688311688
+SA16,27.0,R01,"lateral fall while sitting, caused by fainting",656,67,589,0.10213414634146341
+SA16,28.0,R01,Vertical(forward) fall while walking caused by fainting,749,68,681,0.09078771695594126
+SA16,29.0,R01,"Fall while walking, with use of hands in a table to dampen fall, caused by fainting",890,83,807,0.09325842696629214
+SA16,30.0,R01,Forward fall while walking caused by a trip,743,61,682,0.08209959623149395
+SA16,31.0,R01,Forward fall while jogging caused by a trip,549,62,487,0.11293260473588343
+SA16,32.0,R01,Forward fall while walking caused by a slip,569,59,510,0.10369068541300527
+SA16,33.0,R01,Forward lateral fall while walking caused by a slip,640,67,573,0.1046875
+SA16,34.0,R01,Backward fall while walking caused by a slip,617,57,560,0.09238249594813615
+SA17,20.0,R01,Forward fall when trying to sit down,606,86,520,0.1419141914191419
+SA17,21.0,R01,Backward fall when trying to sit down,914,56,858,0.061269146608315096
+SA17,22.0,R01,lateral fall when trying to sit down,970,76,894,0.07835051546391752
+SA17,23.0,R01,Forward fall when trying to get up,912,82,830,0.08991228070175439
+SA17,24.0,R01,lateral fall when trying to get up,963,65,898,0.06749740394600208
+SA17,25.0,R01,"Forward fall while sitting, caused by fainting",1022,107,915,0.10469667318982387
+SA17,26.0,R01,"lateral fall while sitting, caused by fainting",964,65,899,0.06742738589211618
+SA17,27.0,R01,"Backward fall while sitting, caused by fainting",909,44,865,0.0484048404840484
+SA17,28.0,R01,Vertical(forward) fall while walking caused by fainting,1248,86,1162,0.06891025641025642
+SA17,29.0,R01,"Fall while walking, with use of hands in a table to dampen fall, caused by fainting",946,56,890,0.05919661733615222
+SA17,30.0,R01,Forward fall while walking caused by a trip,772,69,703,0.08937823834196891
+SA17,31.0,R01,Forward fall while jogging caused by a trip,672,55,617,0.0818452380952381
+SA17,32.0,R01,Forward fall while walking caused by a slip,817,59,758,0.07221542227662178
+SA17,33.0,R01,Forward lateral fall while walking caused by a slip,822,61,761,0.07420924574209246
+SA17,34.0,R01,Backward fall while walking caused by a slip,903,70,833,0.07751937984496124
+SA18,20.0,R01,Forward fall when trying to sit down,577,97,480,0.1681109185441941
+SA18,21.0,R01,Backward fall when trying to sit down,837,68,769,0.08124253285543608
+SA18,22.0,R01,lateral fall when trying to sit down,824,66,758,0.08009708737864078
+SA18,23.0,R01,Forward fall when trying to get up,877,103,774,0.11744583808437856
+SA18,24.0,R01,lateral fall when trying to get up,803,67,736,0.08343711083437111
+SA18,25.0,R01,"Forward fall while sitting, caused by fainting",854,88,766,0.10304449648711944
+SA18,26.0,R01,"lateral fall while sitting, caused by fainting",872,87,785,0.09977064220183486
+SA18,27.0,R01,"Backward fall while sitting, caused by fainting",818,43,775,0.05256723716381418
+SA18,28.0,R01,Vertical(forward) fall while walking caused by fainting,787,92,695,0.11689961880559085
+SA18,29.0,R01,"Fall while walking, with use of hands in a table to dampen fall, caused by fainting",956,68,888,0.07112970711297072
+SA18,30.0,R01,Forward fall while walking caused by a trip,816,80,736,0.09803921568627451
+SA18,31.0,R01,Forward fall while jogging caused by a trip,719,84,635,0.1168289290681502
+SA18,32.0,R01,Forward fall while walking caused by a slip,822,96,726,0.11678832116788321
+SA18,33.0,R01,Forward lateral fall while walking caused by a slip,832,48,784,0.057692307692307696
+SA18,34.0,R01,Backward fall while walking caused by a slip,908,53,855,0.05837004405286344
+SA19,20.0,R01,Forward fall when trying to sit down,804,81,723,0.10074626865671642
+SA19,21.0,R01,Backward fall when trying to sit down,786,43,743,0.054707379134860054
+SA19,22.0,R01,lateral fall when trying to sit down,812,58,754,0.07142857142857142
+SA19,23.0,R01,Forward fall when trying to get up,806,65,741,0.08064516129032258
+SA19,24.0,R01,lateral fall when trying to get up,836,59,777,0.07057416267942583
+SA19,25.0,R01,"Forward fall while sitting, caused by fainting",828,100,728,0.12077294685990338
+SA19,26.0,R01,"lateral fall while sitting, caused by fainting",773,75,698,0.09702457956015524
+SA19,27.0,R01,"Backward fall while sitting, caused by fainting",697,54,643,0.07747489239598278
+SA19,28.0,R01,Vertical(forward) fall while walking caused by fainting,763,84,679,0.11009174311926606
+SA19,29.0,R01,"Fall while walking, with use of hands in a table to dampen fall, caused by fainting",1028,65,963,0.0632295719844358
+SA19,30.0,R01,Forward fall while walking caused by a trip,890,70,820,0.07865168539325842
+SA19,31.0,R02,Forward fall while jogging caused by a trip,738,81,657,0.10975609756097561
+SA19,32.0,R01,Forward fall while walking caused by a slip,831,81,750,0.09747292418772563
+SA19,33.0,R01,Forward lateral fall while walking caused by a slip,852,82,770,0.09624413145539906
+SA19,34.0,R01,Backward fall while walking caused by a slip,989,96,893,0.09706774519716886
+SA20,20.0,R01,Forward fall when trying to sit down,587,67,520,0.1141396933560477
+SA20,21.0,R01,Backward fall when trying to sit down,707,62,645,0.0876944837340877
+SA20,22.0,R01,lateral fall when trying to sit down,698,60,638,0.08595988538681948
+SA20,23.0,R01,Forward fall when trying to get up,669,80,589,0.11958146487294469
+SA20,24.0,R01,lateral fall when trying to get up,746,69,677,0.09249329758713137
+SA20,25.0,R01,"Forward fall while sitting, caused by fainting",747,118,629,0.15796519410977242
+SA20,26.0,R01,"lateral fall while sitting, caused by fainting",766,81,685,0.10574412532637076
+SA20,27.0,R01,"Backward fall while sitting, caused by fainting",671,68,603,0.10134128166915052
+SA20,28.0,R01,Vertical(forward) fall while walking caused by fainting,878,80,798,0.09111617312072894
+SA20,29.0,R01,"Fall while walking, with use of hands in a table to dampen fall, caused by fainting",1006,67,939,0.06660039761431412
+SA20,30.0,R02,Forward fall while walking caused by a trip,678,64,614,0.0943952802359882
+SA20,31.0,R01,Forward fall while jogging caused by a trip,623,73,550,0.11717495987158909
+SA20,32.0,R01,Forward fall while walking caused by a slip,699,61,638,0.08726752503576538
+SA20,33.0,R01,Forward lateral fall while walking caused by a slip,690,54,636,0.0782608695652174
+SA20,34.0,R01,Backward fall while walking caused by a slip,769,63,706,0.08192457737321196
+SA21,20.0,R02,Forward fall when trying to sit down,740,83,657,0.11216216216216217
+SA21,21.0,R01,Backward fall when trying to sit down,687,45,642,0.06550218340611354
+SA21,22.0,R01,lateral fall when trying to sit down,772,54,718,0.06994818652849741
+SA21,23.0,R02,Forward fall when trying to get up,744,81,663,0.10887096774193548
+SA21,24.0,R01,lateral fall when trying to get up,711,79,632,0.1111111111111111
+SA21,25.0,R01,"Forward fall while sitting, caused by fainting",711,96,615,0.1350210970464135
+SA21,26.0,R01,"lateral fall while sitting, caused by fainting",680,76,604,0.11176470588235295
+SA21,27.0,R01,"Backward fall while sitting, caused by fainting",684,61,623,0.0891812865497076
+SA21,28.0,R01,Vertical(forward) fall while walking caused by fainting,725,85,640,0.11724137931034483
+SA21,29.0,R01,"Fall while walking, with use of hands in a table to dampen fall, caused by fainting",835,62,773,0.07425149700598803
+SA21,30.0,R01,Forward fall while walking caused by a trip,686,84,602,0.12244897959183673
+SA21,31.0,R01,Forward fall while jogging caused by a trip,655,79,576,0.12061068702290076
+SA21,32.0,R01,Forward fall while walking caused by a slip,703,74,629,0.10526315789473684
+SA21,33.0,R01,Forward lateral fall while walking caused by a slip,714,74,640,0.10364145658263306
+SA21,34.0,R01,Backward fall while walking caused by a slip,806,76,730,0.09429280397022333
+SA22,20.0,R01,Forward fall when trying to sit down,689,71,618,0.10304789550072568
+SA22,21.0,R01,Backward fall when trying to sit down,671,67,604,0.09985096870342772
+SA22,22.0,R01,lateral fall when trying to sit down,763,77,686,0.10091743119266056
+SA22,23.0,R01,Forward fall when trying to get up,777,78,699,0.10038610038610038
+SA22,24.0,R01,lateral fall when trying to get up,830,76,754,0.09156626506024096
+SA22,25.0,R01,"Forward fall while sitting, caused by fainting",760,90,670,0.11842105263157894
+SA22,26.0,R01,"lateral fall while sitting, caused by fainting",769,88,681,0.11443433029908973
+SA22,27.0,R01,"Backward fall while sitting, caused by fainting",730,81,649,0.11095890410958904
+SA22,28.0,R01,Vertical(forward) fall while walking caused by fainting,734,78,656,0.10626702997275204
+SA22,29.0,R01,"Fall while walking, with use of hands in a table to dampen fall, caused by fainting",930,79,851,0.08494623655913978
+SA22,30.0,R01,Forward fall while walking caused by a trip,629,61,568,0.09697933227344992
+SA22,31.0,R01,Forward fall while jogging caused by a trip,537,56,481,0.1042830540037244
+SA22,32.0,R01,Forward fall while walking caused by a slip,589,68,521,0.11544991511035653
+SA22,33.0,R01,Forward lateral fall while walking caused by a slip,678,63,615,0.09292035398230089
+SA22,34.0,R01,Backward fall while walking caused by a slip,743,74,669,0.09959623149394348
+SA23,20.0,R01,Forward fall when trying to sit down,665,107,558,0.16090225563909774
+SA23,21.0,R01,Backward fall when trying to sit down,674,79,595,0.1172106824925816
+SA23,22.0,R01,lateral fall when trying to sit down,676,70,606,0.10355029585798817
+SA23,23.0,R01,Forward fall when trying to get up,642,74,568,0.11526479750778816
+SA23,24.0,R01,lateral fall when trying to get up,744,77,667,0.10349462365591398
+SA23,25.0,R01,"Forward fall while sitting, caused by fainting",687,82,605,0.11935953420669577
+SA23,26.0,R01,"lateral fall while sitting, caused by fainting",655,79,576,0.12061068702290076
+SA23,27.0,R01,"Backward fall while sitting, caused by fainting",628,61,567,0.09713375796178345
+SA23,28.0,R01,Vertical(forward) fall while walking caused by fainting,840,73,767,0.0869047619047619
+SA23,29.0,R01,"Fall while walking, with use of hands in a table to dampen fall, caused by fainting",775,72,703,0.09290322580645162
+SA23,30.0,R01,Forward fall while walking caused by a trip,597,62,535,0.10385259631490787
+SA23,31.0,R01,Forward fall while jogging caused by a trip,579,60,519,0.10362694300518134
+SA23,32.0,R01,Forward fall while walking caused by a slip,627,59,568,0.09409888357256778
+SA23,33.0,R01,Forward lateral fall while walking caused by a slip,644,62,582,0.09627329192546584
+SA23,34.0,R01,Backward fall while walking caused by a slip,677,71,606,0.10487444608567208
+SA24,20.0,R01,Forward fall when trying to sit down,791,71,720,0.0897597977243995
+SA24,21.0,R01,Backward fall when trying to sit down,735,65,670,0.08843537414965986
+SA24,22.0,R01,lateral fall when trying to sit down,873,67,806,0.07674684994272624
+SA24,23.0,R01,Forward fall when trying to get up,841,76,765,0.09036860879904875
+SA24,24.0,R01,lateral fall when trying to get up,799,80,719,0.10012515644555695
+SA24,25.0,R01,"Forward fall while sitting, caused by fainting",855,78,777,0.0912280701754386
+SA24,26.0,R01,"lateral fall while sitting, caused by fainting",693,81,612,0.11688311688311688
+SA24,27.0,R01,"Backward fall while sitting, caused by fainting",769,67,702,0.08712613784135241
+SA24,28.0,R01,Vertical(forward) fall while walking caused by fainting,901,84,817,0.0932297447280799
+SA24,29.0,R01,"Fall while walking, with use of hands in a table to dampen fall, caused by fainting",810,68,742,0.08395061728395062
+SA24,30.0,R01,Forward fall while walking caused by a trip,784,77,707,0.09821428571428571
+SA24,31.0,R02,Forward fall while jogging caused by a trip,645,68,577,0.10542635658914729
+SA24,32.0,R01,Forward fall while walking caused by a slip,640,47,593,0.0734375
+SA24,33.0,R01,Forward lateral fall while walking caused by a slip,669,52,617,0.07772795216741404
+SA24,34.0,R01,Backward fall while walking caused by a slip,756,66,690,0.0873015873015873
+SA25,20.0,R01,Forward fall when trying to sit down,798,106,692,0.13283208020050125
+SA25,21.0,R01,Backward fall when trying to sit down,758,62,696,0.08179419525065963
+SA25,22.0,R01,lateral fall when trying to sit down,744,104,640,0.13978494623655913
+SA25,23.0,R01,Forward fall when trying to get up,693,79,614,0.113997113997114
+SA25,24.0,R01,lateral fall when trying to get up,731,72,659,0.09849521203830369
+SA25,25.0,R01,"Forward fall while sitting, caused by fainting",771,97,674,0.125810635538262
+SA25,26.0,R01,"lateral fall while sitting, caused by fainting",655,92,563,0.14045801526717558
+SA25,27.0,R01,"Backward fall while sitting, caused by fainting",709,58,651,0.08180535966149506
+SA25,28.0,R01,Vertical(forward) fall while walking caused by fainting,831,86,745,0.10348977135980746
+SA25,29.0,R01,"Fall while walking, with use of hands in a table to dampen fall, caused by fainting",986,61,925,0.061866125760649086
+SA25,30.0,R01,Forward fall while walking caused by a trip,712,66,646,0.09269662921348315
+SA25,31.0,R01,Forward fall while jogging caused by a trip,656,80,576,0.12195121951219512
+SA25,32.0,R01,Forward fall while walking caused by a slip,662,68,594,0.1027190332326284
+SA25,33.0,R01,Forward lateral fall while walking caused by a slip,669,63,606,0.09417040358744394
+SA25,34.0,R01,Backward fall while walking caused by a slip,728,68,660,0.09340659340659341
+SA26,20.0,R01,Forward fall when trying to sit down,839,84,755,0.10011918951132301
+SA26,21.0,R01,Backward fall when trying to sit down,786,69,717,0.08778625954198473
+SA26,22.0,R01,lateral fall when trying to sit down,577,62,515,0.10745233968804159
+SA26,23.0,R01,Forward fall when trying to get up,877,99,778,0.11288483466362599
+SA26,24.0,R01,lateral fall when trying to get up,804,77,727,0.09577114427860696
+SA26,25.0,R01,"Forward fall while sitting, caused by fainting",632,96,536,0.1518987341772152
+SA26,26.0,R01,"lateral fall while sitting, caused by fainting",799,76,723,0.0951188986232791
+SA26,27.0,R01,"Backward fall while sitting, caused by fainting",801,60,741,0.0749063670411985
+SA26,28.0,R01,Vertical(forward) fall while walking caused by fainting,890,105,785,0.11797752808988764
+SA26,29.0,R01,"Fall while walking, with use of hands in a table to dampen fall, caused by fainting",969,76,893,0.0784313725490196
+SA26,30.0,R01,Forward fall while walking caused by a trip,643,73,570,0.11353032659409021
+SA26,31.0,R01,Forward fall while jogging caused by a trip,636,70,566,0.11006289308176101
+SA26,32.0,R01,Forward fall while walking caused by a slip,672,73,599,0.10863095238095238
+SA26,33.0,R01,Forward lateral fall while walking caused by a slip,738,77,661,0.1043360433604336
+SA26,34.0,R01,Backward fall while walking caused by a slip,811,80,731,0.09864364981504316
+SA27,20.0,R01,Forward fall when trying to sit down,657,106,551,0.1613394216133942
+SA27,21.0,R01,Backward fall when trying to sit down,877,68,809,0.07753705815279362
+SA27,22.0,R01,lateral fall when trying to sit down,866,81,785,0.09353348729792148
+SA27,23.0,R01,Forward fall when trying to get up,918,84,834,0.0915032679738562
+SA27,24.0,R01,lateral fall when trying to get up,940,85,855,0.09042553191489362
+SA27,25.0,R01,"Forward fall while sitting, caused by fainting",761,93,668,0.12220762155059132
+SA27,26.0,R01,"lateral fall while sitting, caused by fainting",726,71,655,0.09779614325068871
+SA27,27.0,R01,"Backward fall while sitting, caused by fainting",772,74,698,0.09585492227979274
+SA27,28.0,R01,Vertical(forward) fall while walking caused by fainting,832,88,744,0.10576923076923077
+SA27,29.0,R01,"Fall while walking, with use of hands in a table to dampen fall, caused by fainting",1001,71,930,0.07092907092907093
+SA27,30.0,R01,Forward fall while walking caused by a trip,801,96,705,0.1198501872659176
+SA27,31.0,R01,Forward fall while jogging caused by a trip,637,81,556,0.1271585557299843
+SA27,32.0,R01,Forward fall while walking caused by a slip,719,78,641,0.10848400556328233
+SA27,33.0,R01,Forward lateral fall while walking caused by a slip,818,62,756,0.07579462102689487
+SA27,34.0,R01,Backward fall while walking caused by a slip,853,65,788,0.07620164126611957
+SA28,20.0,R01,Forward fall when trying to sit down,531,83,448,0.15630885122410546
+SA28,21.0,R01,Backward fall when trying to sit down,810,61,749,0.07530864197530865
+SA28,22.0,R01,lateral fall when trying to sit down,824,70,754,0.08495145631067962
+SA28,23.0,R01,Forward fall when trying to get up,829,81,748,0.097708082026538
+SA28,24.0,R01,lateral fall when trying to get up,878,78,800,0.0888382687927107
+SA28,25.0,R01,"Forward fall while sitting, caused by fainting",888,98,790,0.11036036036036036
+SA28,26.0,R01,"lateral fall while sitting, caused by fainting",816,86,730,0.1053921568627451
+SA28,27.0,R01,"Backward fall while sitting, caused by fainting",826,63,763,0.07627118644067797
+SA28,28.0,R01,Vertical(forward) fall while walking caused by fainting,895,77,818,0.08603351955307263
+SA28,29.0,R01,"Fall while walking, with use of hands in a table to dampen fall, caused by fainting",1066,75,991,0.07035647279549719
+SA28,30.0,R01,Forward fall while walking caused by a trip,805,77,728,0.09565217391304348
+SA28,31.0,R01,Forward fall while jogging caused by a trip,698,68,630,0.09742120343839542
+SA28,32.0,R01,Forward fall while walking caused by a slip,885,73,812,0.08248587570621468
+SA28,33.0,R02,Forward lateral fall while walking caused by a slip,818,67,751,0.08190709046454768
+SA28,34.0,R01,Backward fall while walking caused by a slip,977,65,912,0.06653019447287616
+SA29,20.0,R01,Forward fall when trying to sit down,816,85,731,0.10416666666666667
+SA29,21.0,R01,Backward fall when trying to sit down,715,71,644,0.0993006993006993
+SA29,22.0,R01,lateral fall when trying to sit down,759,62,697,0.08168642951251646
+SA29,23.0,R01,Forward fall when trying to get up,831,95,736,0.11432009626955475
+SA29,24.0,R01,lateral fall when trying to get up,873,70,803,0.08018327605956473
+SA29,25.0,R01,"Forward fall while sitting, caused by fainting",866,116,750,0.13394919168591224
+SA29,26.0,R01,"lateral fall while sitting, caused by fainting",746,79,667,0.10589812332439678
+SA29,27.0,R01,"Backward fall while sitting, caused by fainting",734,56,678,0.07629427792915532
+SA29,28.0,R01,Vertical(forward) fall while walking caused by fainting,915,93,822,0.10163934426229508
+SA29,29.0,R01,"Fall while walking, with use of hands in a table to dampen fall, caused by fainting",977,69,908,0.07062436028659161
+SA29,30.0,R01,Forward fall while walking caused by a trip,768,90,678,0.1171875
+SA29,31.0,R01,Forward fall while jogging caused by a trip,645,74,571,0.11472868217054263
+SA29,32.0,R01,Forward fall while walking caused by a slip,694,70,624,0.10086455331412104
+SA29,33.0,R01,Forward lateral fall while walking caused by a slip,808,54,754,0.06683168316831684
+SA29,34.0,R01,Backward fall while walking caused by a slip,822,61,761,0.07420924574209246
+SA30,20.0,R01,Forward fall when trying to sit down,721,99,622,0.13730929264909847
+SA30,21.0,R01,Backward fall when trying to sit down,703,69,634,0.09815078236130868
+SA30,22.0,R01,lateral fall when trying to sit down,739,78,661,0.10554803788903924
+SA30,23.0,R01,Forward fall when trying to get up,731,98,633,0.13406292749658003
+SA30,24.0,R01,lateral fall when trying to get up,792,79,713,0.09974747474747475
+SA30,25.0,R01,"Forward fall while sitting, caused by fainting",840,117,723,0.1392857142857143
+SA30,26.0,R01,"lateral fall while sitting, caused by fainting",776,75,701,0.09664948453608248
+SA30,27.0,R01,"Backward fall while sitting, caused by fainting",682,84,598,0.12316715542521994
+SA30,28.0,R01,Vertical(forward) fall while walking caused by fainting,885,84,801,0.09491525423728814
+SA30,29.0,R01,"Fall while walking, with use of hands in a table to dampen fall, caused by fainting",765,75,690,0.09803921568627451
+SA30,30.0,R01,Forward fall while walking caused by a trip,652,69,583,0.1058282208588957
+SA30,31.0,R01,Forward fall while jogging caused by a trip,659,74,585,0.11229135053110774
+SA30,32.0,R01,Forward fall while walking caused by a slip,653,81,572,0.12404287901990811
+SA30,33.0,R01,Forward lateral fall while walking caused by a slip,722,69,653,0.09556786703601108
+SA30,34.0,R01,Backward fall while walking caused by a slip,663,60,603,0.09049773755656108
+SA31,20.0,R01,Forward fall when trying to sit down,764,92,672,0.12041884816753927
+SA31,21.0,R01,Backward fall when trying to sit down,695,68,627,0.09784172661870504
+SA31,22.0,R01,lateral fall when trying to sit down,673,74,599,0.1099554234769688
+SA31,23.0,R01,Forward fall when trying to get up,695,83,612,0.11942446043165468
+SA31,24.0,R01,lateral fall when trying to get up,719,67,652,0.09318497913769123
+SA31,25.0,R01,"Forward fall while sitting, caused by fainting",713,96,617,0.13464235624123422
+SA31,26.0,R01,"lateral fall while sitting, caused by fainting",654,68,586,0.10397553516819572
+SA31,27.0,R01,"Backward fall while sitting, caused by fainting",653,70,583,0.10719754977029096
+SA31,28.0,R01,Vertical(forward) fall while walking caused by fainting,848,82,766,0.09669811320754718
+SA31,29.0,R01,"Fall while walking, with use of hands in a table to dampen fall, caused by fainting",825,73,752,0.08848484848484849
+SA31,30.0,R01,Forward fall while walking caused by a trip,641,72,569,0.11232449297971919
+SA31,31.0,R01,Forward fall while jogging caused by a trip,555,70,485,0.12612612612612611
+SA31,32.0,R01,Forward fall while walking caused by a slip,578,62,516,0.10726643598615918
+SA31,33.0,R01,Forward lateral fall while walking caused by a slip,706,60,646,0.08498583569405099
+SA31,34.0,R01,Backward fall while walking caused by a slip,715,62,653,0.08671328671328671
+SA32,20.0,R01,Forward fall when trying to sit down,730,110,620,0.1506849315068493
+SA32,21.0,R01,Backward fall when trying to sit down,725,69,656,0.09517241379310344
+SA32,22.0,R01,lateral fall when trying to sit down,717,70,647,0.09762900976290098
+SA32,23.0,R01,Forward fall when trying to get up,762,84,678,0.11023622047244094
+SA32,24.0,R01,lateral fall when trying to get up,766,72,694,0.09399477806788512
+SA32,25.0,R01,"Forward fall while sitting, caused by fainting",716,76,640,0.10614525139664804
+SA32,26.0,R01,"lateral fall while sitting, caused by fainting",720,74,646,0.10277777777777777
+SA32,27.0,R01,"Backward fall while sitting, caused by fainting",691,63,628,0.09117221418234443
+SA32,28.0,R01,Vertical(forward) fall while walking caused by fainting,771,78,693,0.10116731517509728
+SA32,29.0,R01,"Fall while walking, with use of hands in a table to dampen fall, caused by fainting",941,73,868,0.077577045696068
+SA32,30.0,R01,Forward fall while walking caused by a trip,653,74,579,0.11332312404287902
+SA32,31.0,R01,Forward fall while jogging caused by a trip,618,59,559,0.09546925566343042
+SA32,32.0,R01,Forward fall while walking caused by a slip,681,61,620,0.08957415565345081
+SA32,33.0,R01,Forward lateral fall while walking caused by a slip,707,68,639,0.09618104667609619
+SA32,34.0,R01,Backward fall while walking caused by a slip,718,67,651,0.09331476323119778
+SA33,20.0,R01,Forward fall when trying to sit down,685,69,616,0.10072992700729927
+SA33,21.0,R01,Backward fall when trying to sit down,625,53,572,0.0848
+SA33,22.0,R01,lateral fall when trying to sit down,604,69,535,0.11423841059602649
+SA33,23.0,R01,Forward fall when trying to get up,691,79,612,0.11432706222865413
+SA33,24.0,R01,lateral fall when trying to get up,687,62,625,0.09024745269286755
+SA33,25.0,R01,"Forward fall while sitting, caused by fainting",679,79,600,0.11634756995581738
+SA33,26.0,R01,"lateral fall while sitting, caused by fainting",676,63,613,0.09319526627218935
+SA33,27.0,R01,"Backward fall while sitting, caused by fainting",645,58,587,0.08992248062015504
+SA33,28.0,R01,Vertical(forward) fall while walking caused by fainting,680,72,608,0.10588235294117647
+SA33,29.0,R01,"Fall while walking, with use of hands in a table to dampen fall, caused by fainting",779,67,712,0.08600770218228498
+SA33,30.0,R01,Forward fall while walking caused by a trip,606,69,537,0.11386138613861387
+SA33,31.0,R01,Forward fall while jogging caused by a trip,519,78,441,0.15028901734104047
+SA33,32.0,R01,Forward fall while walking caused by a slip,675,75,600,0.1111111111111111
+SA33,33.0,R01,Forward lateral fall while walking caused by a slip,724,75,649,0.10359116022099447
+SA33,34.0,R01,Backward fall while walking caused by a slip,747,66,681,0.08835341365461848
+SA35,20.0,R01,Forward fall when trying to sit down,643,119,524,0.18506998444790046
+SA35,21.0,R01,Backward fall when trying to sit down,625,67,558,0.1072
+SA35,22.0,R01,lateral fall when trying to sit down,699,68,631,0.09728183118741059
+SA35,23.0,R01,Forward fall when trying to get up,853,101,752,0.11840562719812427
+SA35,24.0,R01,lateral fall when trying to get up,767,71,696,0.09256844850065189
+SA35,25.0,R01,"Forward fall while sitting, caused by fainting",814,96,718,0.11793611793611794
+SA35,26.0,R01,"lateral fall while sitting, caused by fainting",876,71,805,0.08105022831050228
+SA35,27.0,R01,"Backward fall while sitting, caused by fainting",731,62,669,0.08481532147742818
+SA35,28.0,R01,Vertical(forward) fall while walking caused by fainting,931,87,844,0.09344790547798067
+SA35,29.0,R01,"Fall while walking, with use of hands in a table to dampen fall, caused by fainting",953,67,886,0.07030430220356768
+SA35,30.0,R01,Forward fall while walking caused by a trip,964,75,889,0.07780082987551867
+SA35,31.0,R01,Forward fall while jogging caused by a trip,624,69,555,0.11057692307692307
+SA35,32.0,R01,Forward fall while walking caused by a slip,674,77,597,0.1142433234421365
+SA35,33.0,R01,Forward lateral fall while walking caused by a slip,730,64,666,0.08767123287671233
+SA35,34.0,R01,Backward fall while walking caused by a slip,848,65,783,0.07665094339622641
+SA36,20.0,R01,Forward fall when trying to sit down,592,91,501,0.15371621621621623
+SA36,21.0,R01,Backward fall when trying to sit down,666,64,602,0.0960960960960961
+SA36,22.0,R01,lateral fall when trying to sit down,697,66,631,0.09469153515064563
+SA36,23.0,R01,Forward fall when trying to get up,696,94,602,0.13505747126436782
+SA36,24.0,R01,lateral fall when trying to get up,734,71,663,0.09673024523160763
+SA36,25.0,R01,"Forward fall while sitting, caused by fainting",745,98,647,0.13154362416107382
+SA36,26.0,R01,"lateral fall while sitting, caused by fainting",655,58,597,0.08854961832061069
+SA36,27.0,R01,"Backward fall while sitting, caused by fainting",629,58,571,0.09220985691573927
+SA36,28.0,R01,Vertical(forward) fall while walking caused by fainting,779,80,699,0.10269576379974327
+SA36,29.0,R01,"Fall while walking, with use of hands in a table to dampen fall, caused by fainting",856,64,792,0.07476635514018691
+SA36,30.0,R01,Forward fall while walking caused by a trip,600,88,512,0.14666666666666667
+SA36,31.0,R01,Forward fall while jogging caused by a trip,604,71,533,0.11754966887417219
+SA36,32.0,R01,Forward fall while walking caused by a slip,651,55,596,0.08448540706605223
+SA36,33.0,R01,Forward lateral fall while walking caused by a slip,669,70,599,0.10463378176382661
+SA36,34.0,R01,Backward fall while walking caused by a slip,721,66,655,0.09153952843273232
+SA37,20.0,R01,Forward fall when trying to sit down,715,82,633,0.11468531468531469
+SA37,21.0,R01,Backward fall when trying to sit down,644,62,582,0.09627329192546584
+SA37,22.0,R01,lateral fall when trying to sit down,686,63,623,0.09183673469387756
+SA37,23.0,R01,Forward fall when trying to get up,726,79,647,0.10881542699724518
+SA37,24.0,R01,lateral fall when trying to get up,770,68,702,0.08831168831168831
+SA37,25.0,R02,"Forward fall while sitting, caused by fainting",754,102,652,0.13527851458885942
+SA37,26.0,R02,"lateral fall while sitting, caused by fainting",613,65,548,0.10603588907014681
+SA37,27.0,R01,"Backward fall while sitting, caused by fainting",673,62,611,0.09212481426448738
+SA37,28.0,R01,Vertical(forward) fall while walking caused by fainting,796,80,716,0.10050251256281408
+SA37,29.0,R01,"Fall while walking, with use of hands in a table to dampen fall, caused by fainting",925,83,842,0.08972972972972973
+SA37,30.0,R01,Forward fall while walking caused by a trip,663,68,595,0.10256410256410256
+SA37,31.0,R01,Forward fall while jogging caused by a trip,567,45,522,0.07936507936507936
+SA37,32.0,R01,Forward fall while walking caused by a slip,621,60,561,0.0966183574879227
+SA37,33.0,R01,Forward lateral fall while walking caused by a slip,645,66,579,0.10232558139534884
+SA37,34.0,R01,Backward fall while walking caused by a slip,752,61,691,0.08111702127659574
+SA38,20.0,R01,Forward fall when trying to sit down,752,84,668,0.11170212765957446
+SA38,21.0,R01,Backward fall when trying to sit down,661,60,601,0.0907715582450832
+SA38,22.0,R01,lateral fall when trying to sit down,741,68,673,0.09176788124156546
+SA38,23.0,R01,Forward fall when trying to get up,824,82,742,0.09951456310679611
+SA38,24.0,R01,lateral fall when trying to get up,754,68,686,0.09018567639257294
+SA38,25.0,R01,"Forward fall while sitting, caused by fainting",719,96,623,0.13351877607788595
+SA38,26.0,R01,"lateral fall while sitting, caused by fainting",763,78,685,0.10222804718217562
+SA38,27.0,R01,"Backward fall while sitting, caused by fainting",725,63,662,0.08689655172413793
+SA38,28.0,R01,Vertical(forward) fall while walking caused by fainting,920,84,836,0.09130434782608696
+SA38,29.0,R01,"Fall while walking, with use of hands in a table to dampen fall, caused by fainting",927,67,860,0.07227615965480043
+SA38,30.0,R01,Forward fall while walking caused by a trip,822,74,748,0.09002433090024331
+SA38,31.0,R01,Forward fall while jogging caused by a trip,734,77,657,0.10490463215258855
+SA38,32.0,R01,Forward fall while walking caused by a slip,782,76,706,0.09718670076726342
+SA38,33.0,R01,Forward lateral fall while walking caused by a slip,762,66,696,0.08661417322834646
+SA38,34.0,R01,Backward fall while walking caused by a slip,886,79,807,0.08916478555304741

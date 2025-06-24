@@ -1,0 +1,214 @@
+@import url('https://fonts.googleapis.com/css2?family=Noto+Sans+SC:wght@300;400;500;700&display=swap');
+
+:root {
+    --bg-color: #121212;
+    --panel-bg: #1e1e1e;
+    --grid-bg: #171717;
+    --primary: #03dac6;
+    --secondary: #bb86fc;
+    --error: #cf6679;
+    --text-primary: #e0e0e0;
+    --text-secondary: #a0a0a0;
+    --border-color: rgba(255, 255, 255, 0.1);
+    --font-family: 'Noto Sans SC', sans-serif;
+    --fall-color: #ff7979;
+    --normal-color: #7bed9f;
+}
+
+* { box-sizing: border-box; }
+
+body {
+    font-family: var(--font-family);
+    background-color: var(--bg-color);
+    color: var(--text-primary);
+    margin: 0;
+    overflow-x: hidden;
+}
+
+.main-container {
+    display: grid;
+    grid-template-columns: 320px 1fr;
+    height: 100vh;
+    width: 100vw;
+}
+
+/* 左侧控制面板 */
+.control-panel {
+    background-color: var(--panel-bg);
+    padding: 25px;
+    border-right: 1px solid var(--border-color);
+    display: flex;
+    flex-direction: column;
+    gap: 30px;
+    overflow-y: auto;
+}
+
+.panel-section h2 {
+    font-size: 1.2rem;
+    font-weight: 500;
+    color: var(--secondary);
+    margin-top: 0;
+    margin-bottom: 15px;
+    border-bottom: 1px solid var(--border-color);
+    padding-bottom: 10px;
+}
+
+.form-group {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+    margin-bottom: 15px;
+}
+
+.form-group label {
+    font-size: 0.9rem;
+    color: var(--text-secondary);
+}
+
+#model-selector {
+    width: 100%;
+    padding: 8px;
+    background: #2c2c2c;
+    border: 1px solid var(--border-color);
+    color: var(--text-primary);
+    border-radius: 5px;
+}
+
+.button-group {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 10px;
+    margin-bottom: 15px;
+}
+
+#start-pause-button, #stop-button {
+    width: 100%;
+    padding: 12px;
+    font-size: 1rem;
+    font-weight: 700;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.2s, transform 0.1s;
+}
+
+#start-pause-button {
+    background-color: var(--secondary);
+    color: #121212;
+}
+
+#start-pause-button:hover { background-color: #a164f7; }
+#start-pause-button:active { transform: scale(0.98); }
+#start-pause-button:disabled { background-color: #555; cursor: not-allowed; }
+
+#stop-button {
+    background-color: var(--error);
+    color: var(--text-primary);
+}
+#stop-button:hover {
+    background-color: #e57e8f;
+}
+#stop-button:disabled {
+    background-color: #555;
+    color: #888;
+    cursor: not-allowed;
+}
+
+.status-box {
+    padding: 15px;
+    border-radius: 5px;
+    text-align: center;
+    transition: background-color 0.4s;
+}
+.status-box.waiting { background-color: #444; }
+.status-box.normal { background-color: var(--normal-color); }
+.status-box.fall { background-color: var(--fall-color); }
+
+.status-title { font-size: 0.8rem; opacity: 0.7; margin-bottom: 5px; color: #121212; }
+.status-value { font-size: 1.5rem; font-weight: 700; color: #121212; }
+
+.confidence-meter { margin-top: 15px; }
+.confidence-title { font-size: 0.9rem; color: var(--text-secondary); margin-bottom: 8px; }
+.meter-bar { width: 100%; height: 20px; background-color: #2c2c2c; border-radius: 10px; overflow: hidden; }
+.meter-fill { height: 100%; background-color: var(--fall-color); width: 0%; transition: width 0.3s; }
+.meter-value { font-size: 0.8rem; text-align: right; margin-top: 5px; color: var(--text-secondary); }
+
+.progress-bar-container { width: 100%; height: 8px; background-color: #2c2c2c; border-radius: 4px; overflow: hidden; margin-bottom: 8px; }
+.progress-bar-fill { height: 100%; background-color: var(--primary); width: 0%; transition: width 0.1s linear; }
+.status-message { font-size: 0.8rem; color: var(--text-secondary); min-height: 1.2em; }
+
+/* 实时数据详情 */
+.data-details-section {
+    margin-top: 20px;
+    border-top: 1px solid var(--border-color);
+    padding-top: 20px;
+}
+
+.data-details-section h2 {
+    margin-top: 0;
+}
+
+.details-grid {
+    display: grid;
+    grid-template-columns: auto 1fr;
+    gap: 8px 15px;
+    font-size: 0.85rem;
+}
+
+.details-grid .label {
+    font-weight: 500;
+    color: var(--text-secondary);
+    text-align: right;
+}
+
+.details-grid .value {
+    font-weight: 400;
+    color: var(--text-primary);
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+
+/* 速度控制器样式 */
+.speed-control {
+    margin-top: 20px;
+}
+
+.speed-control label {
+    font-size: 0.9rem;
+    color: var(--text-secondary);
+    display: block;
+    margin-bottom: 10px;
+}
+
+#speed-slider {
+    width: 100%;
+    cursor: pointer;
+}
+
+#speed-value {
+    display: block;
+    text-align: center;
+    margin-top: 5px;
+    font-size: 0.9rem;
+    color: var(--primary);
+    font-weight: 500;
+}
+
+/* 右侧图表仪表板 */
+.dashboard-grid {
+    padding: 20px;
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    grid-template-rows: repeat(3, 1fr);
+    gap: 20px;
+    overflow-y: auto;
+    background-color: var(--grid-bg);
+}
+
+.chart-container {
+    background-color: var(--panel-bg);
+    padding: 15px;
+    border-radius: 10px;
+    border: 1px solid var(--border-color);
+}

@@ -1,0 +1,284 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>高级控制 - 实时跌倒预测</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='styles.css') }}">
+    <script src="https://cdn.jsdelivr.net/npm/chart.js@3.7.1/dist/chart.min.js"></script>
+    <script src="https://cdn.socket.io/4.7.5/socket.io.min.js"></script>
+</head>
+<body>
+    <div class="main-container">
+        <!-- ================== 左侧控制面板 ================== -->
+        <div class="control-panel">
+            <div class="panel-section">
+                <h2>控制中心</h2>
+                <div class="form-group">
+                    <label for="model-selector">选择预测模型:</label>
+                    <select id="model-selector">
+                        {% for model_file in models %}
+                            <option value="{{ model_file }}">{{ model_file.replace('.pth', '').replace('_', ' ').title() }}</option>
+                        {% endfor %}
+                    </select>
+                </div>
+                <div class="button-group">
+                    <button id="start-pause-button" data-state="idle">开始模拟</button>
+                    <button id="stop-button" disabled>停止模拟</button>
+                </div>
+                <div class="speed-control">
+                    <label for="speed-slider">模拟速度</label>
+                    <input type="range" id="speed-slider" min="0" max="4" step="1" value="2">
+                    <span id="speed-value">1x</span>
+                </div>
+            </div>
+
+            <div class="panel-section">
+                <h2>实时状态</h2>
+                <div id="prediction-display" class="status-box waiting">
+                    <div class="status-title">预测结果</div>
+                    <div id="prediction-text" class="status-value">待机</div>
+                </div>
+                <div class="confidence-meter">
+                    <div class="confidence-title">跌倒置信度</div>
+                    <div class="meter-bar">
+                        <div id="confidence-fill" class="meter-fill" style="width: 0%;"></div>
+                    </div>
+                    <div id="confidence-value" class="meter-value">0.00%</div>
+                </div>
+            </div>
+
+            <div class="panel-section">
+                <h2>模拟进度</h2>
+                <div class="progress-bar-container">
+                    <div id="progress-bar" class="progress-bar-fill" style="width: 0%;"></div>
+                </div>
+                <div id="status-message" class="status-message">请选择模型并开始</div>
+            </div>
+
+            <div class="panel-section data-details-section">
+                <h2>实时数据详情</h2>
+                <div class="details-grid">
+                    <div class="label">时间戳:</div><div class="value" id="detail-timestamp">N/A</div>
+                    <div class="label">原始标签:</div><div class="value" id="detail-label">N/A</div>
+                    <div class="label">参与者ID:</div><div class="value" id="detail-participant">N/A</div>
+                    <div class="label">试验ID:</div><div class="value" id="detail-trial">N/A</div>
+                    <div class="label">跌倒描述:</div><div class="value" id="detail-description">N/A</div>
+                </div>
+            </div>
+        </div>
+
+        <!-- ================== 右侧图表仪表板 ================== -->
+        <div class="dashboard-grid">
+            <!-- 9个传感器的图表将在这里动态生成 -->
+        </div>
+    </div>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', function () {
+            const socket = io();
+            const sensorNames = ['AccX', 'AccY', 'AccZ', 'GyrX', 'GyrY', 'GyrZ', 'EulerX', 'EulerY', 'EulerZ'];
+            const charts = {};
+            const MAX_DATA_POINTS = 50;
+
+            // --- DOM 元素获取 ---
+            const modelSelector = document.getElementById('model-selector');
+            const startPauseBtn = document.getElementById('start-pause-button');
+            const stopBtn = document.getElementById('stop-button');
+            const speedSlider = document.getElementById('speed-slider');
+            const speedValue = document.getElementById('speed-value');
+            const predictionText = document.getElementById('prediction-text');
+            const predictionDisplay = document.getElementById('prediction-display');
+            const confidenceFill = document.getElementById('confidence-fill');
+            const confidenceValue = document.getElementById('confidence-value');
+            const progressBar = document.getElementById('progress-bar');
+            const statusMessage = document.getElementById('status-message');
+            const dashboardGrid = document.querySelector('.dashboard-grid');
+
+            // 新增的数据详情元素
+            const detailTimestamp = document.getElementById('detail-timestamp');
+            const detailLabel = document.getElementById('detail-label');
+            const detailParticipant = document.getElementById('detail-participant');
+            const detailTrial = document.getElementById('detail-trial');
+            const detailDescription = document.getElementById('detail-description');
+
+            // --- 1. 初始化 ---
+            const speedOptions = [0.5, 0.75, 1, 2, 4];
+            speedSlider.addEventListener('input', () => {
+                const selectedSpeed = speedOptions[speedSlider.value];
+                speedValue.textContent = `${selectedSpeed}x`;
+            });
+            // 触发一次以显示初始值
+            speedSlider.dispatchEvent(new Event('input'));
+
+            sensorNames.forEach(name => {
+                const chartContainer = document.createElement('div');
+                chartContainer.className = 'chart-container';
+                const canvas = document.createElement('canvas');
+                canvas.id = `chart_${name}`;
+                chartContainer.appendChild(canvas);
+                dashboardGrid.appendChild(chartContainer);
+                charts[name] = new Chart(canvas.getContext('2d'), {
+                    type: 'line',
+                    data: { labels: [], datasets: [{ label: name, data: [], borderColor: `hsl(${Math.random() * 360}, 80%, 60%)`, borderWidth: 2, pointRadius: 0, tension: 0.4 }] },
+                    options: {
+                        responsive: true,
+                        maintainAspectRatio: false,
+                        animation: false,
+                        plugins: {
+                            legend: { display: false },
+                            title: {
+                                display: true,
+                                text: name,
+                                color: '#e0e0e0'
+                            }
+                        },
+                        scales: {
+                            x: { display: false },
+                            y: {
+                                ticks: { color: '#aaa' },
+                                grid: { color: 'rgba(255,255,255,0.1)'}
+                            }
+                        }
+                    }
+                });
+            });
+
+            // --- 2. 事件监听与状态管理 ---
+            startPauseBtn.addEventListener('click', () => {
+                const state = startPauseBtn.dataset.state;
+                
+                if (state === 'idle' || state === 'finished') {
+                    const selectedSpeed = speedOptions[speedSlider.value];
+                    socket.emit('start_simulation', { 
+                        model_id: modelSelector.value,
+                        speed: selectedSpeed 
+                    });
+                } else if (state === 'running') {
+                    socket.emit('pause_simulation');
+                } else if (state === 'paused') {
+                    socket.emit('resume_simulation');
+                }
+            });
+
+            stopBtn.addEventListener('click', () => {
+                socket.emit('stop_simulation');
+            });
+
+            socket.on('update_data', (data) => {
+                const { progress, sensors, info, prediction, probability, confidence, is_fall } = data;
+
+                // 更新预测结果文本
+                predictionText.textContent = prediction;
+                
+                // 使用confidence字段来更新置信度显示
+                // 确保在任何情况下都正确更新置信度
+                const confidencePct = (confidence || 0) * 100;
+                confidenceValue.textContent = `${confidencePct.toFixed(2)}%`;
+                confidenceFill.style.width = `${confidencePct}%`;
+                
+                // 更新进度条
+                progressBar.style.width = `${progress}%`;
+                
+                // 根据预测文本和is_fall标志更新状态框样式
+                if (prediction === "数据收集中...") {
+                    predictionDisplay.className = 'status-box waiting';
+                    // 在数据收集阶段，置信度应该为0
+                    confidenceFill.style.width = "0%";
+                    confidenceValue.textContent = "0.00%";
+                } else if (is_fall) {
+                    predictionDisplay.className = 'status-box fall';
+                } else {
+                    predictionDisplay.className = 'status-box normal';
+                    // 确保在非跌倒状态下，置信度条正确显示
+                    if (confidencePct > 50) {
+                        confidenceFill.style.width = `${100 - confidencePct}%`;
+                        confidenceValue.textContent = `${(100 - confidencePct).toFixed(2)}%`;
+                    }
+                }
+
+                // 更新详细信息
+                detailTimestamp.textContent = info['TimeStamp(s)'].toFixed(3);
+                detailLabel.textContent = info['label'];
+                detailParticipant.textContent = info['participant_id'];
+                detailTrial.textContent = info['trial_id'];
+                const description = info['fall_description'] || 'N/A';
+                detailDescription.textContent = description;
+                detailDescription.title = description;
+
+                // 优化图表更新逻辑，确保每一帧都平滑显示
+                // 批量更新策略，减少重绘次数
+                Object.keys(sensors).forEach(name => {
+                    const chart = charts[name];
+                    if (chart) {
+                        // 总是添加数据点
+                        chart.data.labels.push(info['TimeStamp(s)']);
+                        chart.data.datasets[0].data.push(sensors[name]);
+                        if (chart.data.labels.length > MAX_DATA_POINTS) {
+                            chart.data.labels.shift();
+                            chart.data.datasets[0].data.shift();
+                        }
+                    }
+                });
+                
+                // 使用requestAnimationFrame一次性更新所有图表，确保平滑渲染
+                requestAnimationFrame(() => {
+                    Object.values(charts).forEach(chart => {
+                        chart.update('none');
+                    });
+                });
+            });
+            
+            // 统一的状态更新处理器
+            socket.on('simulation_state_update', (data) => {
+                const { state, message } = data;
+                statusMessage.textContent = message;
+                startPauseBtn.dataset.state = state;
+                
+                switch(state) {
+                    case 'running':
+                        startPauseBtn.textContent = '暂停模拟';
+                        startPauseBtn.disabled = false;
+                        modelSelector.disabled = true;
+                        stopBtn.disabled = false;
+                        speedSlider.disabled = true;
+                        break;
+                    case 'paused':
+                        startPauseBtn.textContent = '继续模拟';
+                        startPauseBtn.disabled = false;
+                        break;
+                    case 'finished':
+                        startPauseBtn.textContent = '重新开始';
+                        startPauseBtn.dataset.state = 'idle'; // 确保可以再次开始
+                        startPauseBtn.disabled = false;
+                        modelSelector.disabled = false;
+                        stopBtn.disabled = true;
+                        speedSlider.disabled = false;
+                        break;
+                }
+            });
+
+            socket.on('simulation_error', (data) => {
+                statusMessage.textContent = `错误: ${data.message}`;
+                // 确保UI在出错时解锁
+                startPauseBtn.dataset.state = 'idle';
+                startPauseBtn.textContent = '开始模拟';
+                startPauseBtn.disabled = false;
+                modelSelector.disabled = false;
+                stopBtn.disabled = true;
+                speedSlider.disabled = false;
+            });
+
+            // 添加对状态重置事件的处理
+            socket.on('status_reset', (data) => {
+                if (data.reset_confidence) {
+                    // 强制重置置信度显示
+                    confidenceFill.style.width = "0%";
+                    confidenceValue.textContent = "0.00%";
+                    predictionDisplay.className = 'status-box normal';
+                }
+            });
+        });
+    </script>
+</body>
+</html>

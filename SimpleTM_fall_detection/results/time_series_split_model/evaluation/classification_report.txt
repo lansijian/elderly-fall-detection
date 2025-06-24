@@ -1,0 +1,19 @@
+SimpleTM Fall Detection Model Evaluation Report
+==========================
+
+Model Path: ./checkpoints/time_series_split_model\best_model.pth
+Window Size: 128
+Model Dimension: 256
+Encoder Layers: 1
+Geometric Attention Alpha: 0.5
+Wavelet Decomposition Level (m): 2
+
+Classification Report:
+              precision    recall  f1-score   support
+
+      Normal     0.9441    0.9590    0.9515      1463
+        Fall     0.8874    0.8507    0.8687       556
+
+    accuracy                         0.9292      2019
+   macro avg     0.9158    0.9049    0.9101      2019
+weighted avg     0.9285    0.9292    0.9287      2019
