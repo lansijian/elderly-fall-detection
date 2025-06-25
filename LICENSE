@@ -18,7 +18,7 @@
 1. 学术引用要求：如果您在学术研究中使用本项目的代码或方法，必须在您的论文或报告中
    引用本项目。推荐的引用格式为：
 
-   @misc{elderlyfalldetection2024,
+   @misc{elderlyfalldetection2025,
      author = {tingyu Chen/xuanhan Liu},
      title = {基于多种深度学习模型的老年人跌倒检测系统},
      year = {2025},
