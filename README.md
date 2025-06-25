@@ -142,7 +142,7 @@
 如果您在研究中使用了本项目，请按以下格式引用：
 
 ```bibtex
-@misc{elderlyfalldetection2024,
+@misc{elderlyfalldetection2025,
   author = {tingyu Chen/xuanhan Liu},
   title = {基于多种深度学习模型的老年人跌倒检测系统},
   year = {2025},
